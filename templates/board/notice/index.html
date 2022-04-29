@@ -1,0 +1,88 @@
+{% extends "component/sidebar.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/board/notice.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+            
+<style>
+
+</style>
+<div id="content">
+	<div id="cont">
+		<div class="board_title">
+			<h3>공지사항</h3>
+		</div>
+		<div class="sub_cont">
+			<div class="cont_lounge">
+				<!-- <div style="background-color: #1596ea; height: 93px;" class="top_area"></div> -->
+				<!-- 리스트 -->
+				<div class="notice_list">
+					<table class="board_list">
+						<colgroup>
+							<col style="width:65px"/>
+							<col style="width:60px"/>
+							<col style="width:435px"/>
+							<col style="width:127px"/>
+							<col style="width:68px"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col" class="no">번호</th>
+								<th scope="col" class="type">구분</th>
+								<th scope="col" class="tit">제목</th>
+								<th scope="col" class="date">등록일</th>
+								<th scope="col" class="hit">조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+								<tr>
+									<td class="no">1</td>
+									<td class="type"><div class="type_notice">공지</div></td>
+									<td class="tit"><a href="/board/notice/1">공지사항입니다.</a></td>
+									<td class="date">2021-12-14</td>
+									<td class="hit">0</td>
+								</tr>
+							
+								<tr>
+									<td class="no">2</td>
+									<td class="type"><div class="type_notice">공지</div></td>
+									<td class="tit"><a href="/board/notice/2">바다나무 홈페이지 이용 안내</a></td>
+									<td class="date">2021-12-14</td>
+									<td class="hit">0</td>
+								</tr>
+							
+								<tr>
+									<td class="no">3</td>
+									<td class="type"><div class="type_notice">공지</div></td>
+									<td class="tit"><a href="/board/notice/3">kidsloop 유저가이드 (강사용)</a></td>
+									<td class="date">2021-12-31</td>
+									<td class="hit">0</td>
+								</tr>
+							
+								<tr>
+									<td class="no">4</td>
+									<td class="type"><div class="type_notice">공지</div></td>
+									<td class="tit"><a href="/board/notice/4">kidsloop 유저가이드 (회원용)</a></td>
+									<td class="date">2021-12-31</td>
+									<td class="hit">0</td>
+								</tr>
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="page_nav">
+					
+					
+						<a name="page_btn" id="page1" class="on" href="?level=&type=&page=1">1</a>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

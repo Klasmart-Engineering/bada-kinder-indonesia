@@ -1,0 +1,15 @@
+.contents_wrap{background-color: azure; padding: 65px;}
+.login_wrap{width: 565px; height: 810px; margin: 0 auto; background-color: #fff; border-radius: 50px; box-shadow: 7px 4px 13px 0px darkgrey; padding: 45px;}
+.login_wrap .button_area{font-size: 16.5px; text-align: center; color: #4295e3;}
+.login_wrap .button_area .login_button{width: 486px; height: 63px; margin: 41px 0 32px; border-radius: 9.6px; background-color: #4295e3; border: none; font-size: 21px; color: #fff;}
+.login_wrap .button_area .signin_btn{text-decoration: underline; text-underline-position: under; font-weight: bold; cursor: pointer;}
+.login_wrap .input_area{padding-top: 20px;}
+.login_wrap .input_area .login_input{width: 100%; height: 63px; margin: 5px 0 9px; border-radius: 9.6px; border: solid 1.2px #d2d2d2; background-color: #fff; padding: 10px;}
+.login_wrap .input_area .login_menu{}
+.login_wrap .input_area .login_menu .menu_button{font-size: 18px; color: #828282; cursor: pointer; text-decoration: none;}
+.login_wrap .input_area .login_menu .check_box{margin-right: 5px; cursor: pointer; float: left; padding-top: 2.5px;}
+.login_wrap .logo_area{text-align: center; padding-top: 15px;}
+.login_wrap .login_text_area{padding: 43px 0 0 13px;}
+.login_wrap .login_text_area .title_text{font-family: 'Nanum Gothic', sans-serif; font-size: 20px; font-weight: bold; color: #58ace1; letter-spacing: -0.4px; line-height: 23px;}
+.login_wrap .login_text_area .login_text{font-family: 'Nanum Gothic', sans-serif; font-size: 36.5px; font-weight: 800; letter-spacing: -0.73px; color: #1596ea;}
+.login_wrap .login_text_area .intro_text{font-family: 'Nanum Gothic', sans-serif; font-size: 18px; font-weight: bold; letter-spacing: -0.73px; color: #999;}

@@ -1,0 +1,9 @@
+.contents_wrap .header{box-shadow: 0 5px 20px 0px lightgrey; height: 186px; background-image: url(https://bv-kidsloop.s3.ap-northeast-2.amazonaws.com/media/image/Top_1920x186_B.png);}
+.contents_wrap .header .logo_area{margin: 36px 0 0 86px; float: left; text-decoration: none;}
+.contents_wrap .header .logo_area .header_title{font-size: 16.5px; font-weight: 800; color: #1596ea; text-align: center; font-family: 'Nanum Gothic', sans-serif; margin: 4px 0px 0 5px; letter-spacing: 0;}
+.contents_wrap .header .header_right{float: right; width: 25%;}
+.contents_wrap .header .header_right .header_tel{font-family: NanumGothic; font-size: 22px; font-weight: bold; color: #666; margin: 23px 46px 0 0; text-align: center;}
+.contents_wrap .header .header_right .header_tel .tel_icon{vertical-align: middle;}
+.contents_wrap .header .header_right .user_login{font-size: 20px; font-family: 'Nanum Gothic', sans-serif; font-weight: bold; color: #808080; margin: 65px 85px 0 0; text-align: left;}
+.contents_wrap .header .header_right .user_login .user_image{vertical-align: middle; margin: 0 7px 11px 0;}
+.contents_wrap .header .header_right .user_login .text_strong{font-size: 26px; color: #4d4d4d;}

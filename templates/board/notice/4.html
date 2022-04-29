@@ -1,0 +1,16 @@
+{% extends "component/sidebar.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/board/notice.css' %}">
+{% endblock %}
+
+{% block content %}
+		<div class="content">
+            
+<div id="content">
+	<div id="cont">
+		<iframe id="test" height="800px" width="71%" src="http://s3.ap-northeast-2.amazonaws.com/bv-kidsloop/media/pdf/notice/kidsloop%20%EC%9C%A0%EC%A0%80%EA%B0%80%EC%9D%B4%EB%93%9C%20(%ED%9A%8C%EC%9B%90%EC%9A%A9).pdf#view=Fit&toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=0" style="background-color: #FFFFFF" Zframeborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+	</div>
+</div>
+{% endblock %}

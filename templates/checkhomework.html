@@ -1,0 +1,20 @@
+{% extends "component/sidebar.html" %}
+{% load static %}
+
+{% block content %}
+		<div class="content">
+            
+<style>
+	.url_logo_area{width: 100%; text-align: center; padding-top: 190px;}
+	.url_logo_area .url_logo{width: 30%; cursor: pointer;}
+	.url_logo_area .url_logo_title{font-size: 20px; margin-top: 20px; padding-left: 45px; font-weight: bold; color: #1596ea;}
+</style>
+<div class="url_logo_area">
+	<a href="https://auth.kidsloop.live/?continue=https%3A%2F%2Fhub.kidsloop.live%2F%23%2F#/" target="_blank">
+		<img class="url_logo" src="{% static 'image/board/url_logo.png' %}" alt="">
+	</a>
+	<div class="url_logo_title">
+		바다나무 로고 클릭시 가정연계로 넘어갑니다.
+	</div>
+</div>
+{% endblock %}

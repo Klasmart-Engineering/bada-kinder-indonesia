@@ -1,0 +1,9 @@
+.contents_wrap{max-width: 1920px; margin: 0 auto; min-width: 1800px;}
+.contents_wrap .content{width: 82%; float: right;}
+.contents_wrap .side_bar{width: 18%; float: left; min-height: 750px;}
+body{margin: 0; overflow-x: hidden;}
+
+@font-face {
+	font-family: 'chalkduster-regular';
+	src: url("../font/Chalkduster/Chalkduster.ttf");
+}
