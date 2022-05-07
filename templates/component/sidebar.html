@@ -6,42 +6,45 @@
 	<div class="menu_list" id="accordion">
 		<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_contents">
 			<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-			<span class="menu_title">컨텐츠</span>
+			<span class="menu_title">Bada Kinder A</span>
 			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
 		</div>
 		<div id="menu_contents" class="panel-collapse collapse">
 			<div class="menu_index">
-				<a href="/contents/nemies">5세 스토리</a>
+				<a href="/contents/nemies">Video</a>
 			</div>
 			<div class="menu_index">
-				<a href="/contents/chant">5세 파닉스</a>
+				<a href="/contents/chant">RPP</a>
 			</div>
 			<div class="menu_index">
-				<a href="/contents/dance">6세 스토리</a>
-			</div>
-			<div class="menu_index">
-				<a href="/contents/sing_along">6세 파닉스</a>
-			</div>
-			<div class="menu_index">
-				<a href="/contents/phonics_song">7세 스토리</a>
-			</div>
-			<div class="menu_index">
-				<a href="/contents/animation">7세 파닉스</a>
-			</div>
-			<div class="menu_index">
-				<a href="/contents/Stories">바다나무 만화영화</a>
-			</div>
-			<div class="menu_index">
-				<a href="/contents/cadets">바다킨더 교육영상</a>
+				<a href="/contents/dance">Activity Book</a>
 			</div>
 		</div>
 		<div class="menu_line"></div>
 		<div id="test11" class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_board">
-			<img class="menu_icon" src="{% static 'image/index/icon-board.png' %}" alt="">
-			<span class="menu_title">게시판</span>
+			<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
+			<span class="menu_title">Bada Kinder B</span>
 			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
 		</div>
 		<div id="menu_board" class="panel-collapse collapse">
+			<div class="menu_index">
+				<a href="/board/notice">Video</a>
+			</div>
+			<div id="plan" class="menu_index" data-toggle="collapse" data-parent="#accordion" href="#menu_plan">
+				<a href="/board/studyplan">RPP</a>
+			</div>
+			<div id="archive" class="menu_index"  data-toggle="collapse" data-parent="#accordion" href="#menu_archive">
+				<a href="/board/archive">Actvity Book</a>
+			</div>
+		</div>
+
+		<div class="menu_line"></div>
+		<div id="test11" class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_board1">
+			<img class="menu_icon" src="{% static 'image/index/icon-board.png' %}" alt="">
+			<span class="menu_title">Tutorial</span>
+			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
+		</div>
+		<div id="menu_board1" class="panel-collapse collapse">
 			<div class="menu_index">
 				<a href="/board/notice">공지사항</a>
 			</div>
@@ -55,7 +58,7 @@
 		<div class="menu_line"></div>
 		<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_homework">
 			<img class="menu_icon" src="{% static 'image/index/icon-homework.png' %}" alt="">
-			<span class="menu_title">가정연계</span>
+			<span class="menu_title">Homework</span>
 			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
 		</div>
 		<div id="menu_homework" class="panel-collapse collapse">
