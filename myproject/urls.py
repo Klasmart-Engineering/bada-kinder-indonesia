@@ -29,4 +29,5 @@ urlpatterns = [
     path("board/notice/4", Board_Notice4.as_view(), name="board_notice_4"),
     path("board/studyplan/34", Board_Studyplan34.as_view(), name="board_studyplan_34"),
     path("board/studyplan/40", Board_Studyplan40.as_view(), name="board_studyplan_40"),
+    path("contents/nemies", Contents_Nemies.as_view(), name="contents_nemies"),
 ]

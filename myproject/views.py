@@ -28,6 +28,8 @@ class Board_Studyplan40(TemplateView):
 class Board_Studyplan34(TemplateView):
     template_name = "board/studyplan/34.html"
 
+class Contents_Nemies(TemplateView):
+    template_name = "contents/nemies.html"
     
 
 
