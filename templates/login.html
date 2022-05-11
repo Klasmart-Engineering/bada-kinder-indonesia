@@ -20,8 +20,15 @@
 					Selamat datang di Bada Kinder Teacher
 				</p>
 			</div>
-			<form method="POST">
-				<input type="hidden" name="csrfmiddlewaretoken" value="7T3SLfkCocsIBiobisyTR0iB9heZd24d20R6dJvc9QzauQUEIhyiU3c79MVj74pZ">
+			<form method="POST" action="{% url 'login' %}" autocomplete="off">
+				{% csrf_token %}
+				{% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Alamat e-mail dan atau password yang kamu masukkan tidak sesuai.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            	{% endif %}
+
 				<div class="input_area">
 					<input class="login_input" name="username" type="text" placeholder="Email">
 					<input class="login_input" name="password" type="password" placeholder="Kata Sandi">

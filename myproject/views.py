@@ -1,8 +1,8 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView
 
-
-class Login(TemplateView):
-    template_name = "login.html"
+class Login(LoginView):
+    template_name = 'login.html'
 
 class Main(TemplateView):
     template_name = "main.html"
