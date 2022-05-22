@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_calendar_weekdays",
+  "info": {
+    "displayName": "weekdays",
+    "icon": "network-wired",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "days": {
+      "type": "component",
+      "repeatable": true,
+      "component": "calendar.days"
+    },
+    "name": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

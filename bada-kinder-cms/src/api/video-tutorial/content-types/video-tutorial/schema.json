@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_tutorials",
+  "info": {
+    "singularName": "video-tutorial",
+    "pluralName": "video-tutorials",
+    "displayName": "Video Tutorial"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "file": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
