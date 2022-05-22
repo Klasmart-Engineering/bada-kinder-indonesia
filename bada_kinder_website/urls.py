@@ -1,4 +1,4 @@
-"""myproject URL Configuration
+"""bada_kinder_website URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -19,7 +19,8 @@ from django.contrib import admin
 from .views import *
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),  
     path("", Login.as_view(), name="login"),
     path("main", Main.as_view(), name="main"),
     path("level/A", LevelA.as_view(), name="levelA"),
