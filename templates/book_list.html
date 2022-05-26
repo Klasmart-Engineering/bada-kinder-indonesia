@@ -1,0 +1,102 @@
+{% extends "component/header.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/level_page/level_A.css' %}">
+	<style>
+	    .book_icon{
+	    	background-image: url('{% static 'image/level_page/book.png' %}');
+	    	width: 202px;
+	    	height: 206px;
+	    	margin: 0 0 0 4px;
+	    	float: left;
+	    }
+	    .book_icon:hover{
+	    	background-image: url('{% static 'image/level_page/book-on.png' %}');
+	    	width: 202px;
+	    	height: 206px;
+	    	margin: 0 0 0 4px;
+	    	float: left;
+	    }
+	</style>
+{% endblock %}
+
+{% block sidebar %}
+	<div class="side_bar">
+		<img class="side_logo" src="{% static 'image/level_page/level-a.png' %}" alt="">
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="content" style="background-image: url('{% static 'image/level_page/ch-image.png' %}');">
+            
+<div class="level_book_area">
+	<div class="row" style="margin: 110px 0 0 86px;">
+		<a href="/book/{{ data.0.id}}" class="book_icon">
+			<div class="book_title">
+				<img src="{{ data.0.attributes.thumbnail.data.attributes.url }}" alt="">
+			</div>
+		</a>
+		<a href="/book/2/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-2.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/3/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-3.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/4/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-4.png' %}" alt="">
+			</div>
+		</a>
+	</div>
+	<div class="row" style="margin-left: 86px;">
+		<a href="/book/5/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-5.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/6/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-6.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/7/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-7.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/8/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-8.png' %}" alt="">
+			</div>
+		</a>
+	</div>
+	<div class="row" style="margin-left: 86px;">
+		<a href="/book/9/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-9.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/10/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-10.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/11/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-11.png' %}" alt="">
+			</div>
+		</a>
+		<a href="/book/12/A" class="book_icon">
+			<div class="book_title">
+				<img src="{% static 'image/level_page/book-12.png' %}" alt="">
+			</div>
+		</a>
+	</div>
+</div>
+{% endblock %}

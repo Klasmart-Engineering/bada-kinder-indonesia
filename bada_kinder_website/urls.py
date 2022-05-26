@@ -16,19 +16,21 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import path, include
 from django.contrib import admin
-from .views import *
+from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),  
-    path("", Login.as_view(), name="login"),
-    path("main", Main.as_view(), name="main"),
-    path("level/A", LevelA.as_view(), name="levelA"),
-    path("book/1/A", Book_1A.as_view(), name="book_1A"),
-    path("checkhomework", Checkhomework.as_view(), name="checkhomework"),
-    path("board/notice", Board_Notice.as_view(), name="board_notice"),
-    path("board/notice/4", Board_Notice4.as_view(), name="board_notice_4"),
-    path("board/studyplan/34", Board_Studyplan34.as_view(), name="board_studyplan_34"),
-    path("board/studyplan/40", Board_Studyplan40.as_view(), name="board_studyplan_40"),
-    path("contents/nemies", Contents_Nemies.as_view(), name="contents_nemies"),
+    path("", views.Login.as_view(), name="login"),
+    path("main", views.main, name="main"),
+    path("level/<int:level_id>/", views.book_list, name="book_list"),
+    path("book/<int:book_id>/", views.book_detail, name="book_detail"),
+    path("book/1/A", views.Book_1A.as_view(), name="book_1A"),
+    # path("book/1/A", Book_1A.as_view(), name="book_1A"),
+    path("checkhomework", views.Checkhomework.as_view(), name="checkhomework"),
+    path("board/notice", views.Board_Notice.as_view(), name="board_notice"),
+    path("board/notice/4", views.Board_Notice4.as_view(), name="board_notice_4"),
+    path("board/studyplan/34", views.Board_Studyplan34.as_view(), name="board_studyplan_34"),
+    path("board/studyplan/40", views.Board_Studyplan40.as_view(), name="board_studyplan_40"),
+    path("contents/nemies", views.Contents_Nemies.as_view(), name="contents_nemies"),
 ]
