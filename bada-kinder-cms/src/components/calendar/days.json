@@ -7,12 +7,9 @@
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "thumbnail": {
+    "videos": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images",
@@ -21,15 +18,13 @@
         "audios"
       ]
     },
-    "videos": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "title": {
+      "type": "string"
+    },
+    "day": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::day.day"
     }
   }
 }

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weeks",
+  "info": {
+    "singularName": "week",
+    "pluralName": "weeks",
+    "displayName": "Week",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ordering": {
+      "type": "integer"
+    },
+    "icon_class": {
+      "type": "string"
+    }
+  }
+}

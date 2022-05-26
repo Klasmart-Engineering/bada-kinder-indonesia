@@ -12,18 +12,13 @@
       "repeatable": true,
       "component": "calendar.days"
     },
-    "name": {
-      "type": "string"
+    "week_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::week.week"
     },
-    "thumbnail": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "week_number": {
+      "type": "string"
     }
   }
 }

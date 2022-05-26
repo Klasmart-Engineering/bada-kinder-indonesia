@@ -8,15 +8,16 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string"
     },
-    "number": {
-      "type": "integer"
+    "book_number": {
+      "type": "integer",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
@@ -29,7 +30,7 @@
         "audios"
       ]
     },
-    "week": {
+    "weeks": {
       "type": "component",
       "repeatable": true,
       "component": "calendar.weekdays"
@@ -38,6 +39,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::level.level"
+    },
+    "book_title_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
