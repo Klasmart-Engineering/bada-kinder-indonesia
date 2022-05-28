@@ -65,14 +65,21 @@
       ]
     },
     "level_title_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "ordering": {
+      "type": "integer",
+      "required": true,
+      "unique": true,
+      "min": 1
     }
   }
 }
