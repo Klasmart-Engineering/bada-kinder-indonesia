@@ -14,15 +14,20 @@ import os
 import environ
 from pathlib import Path
 
+
+import os
+import environ
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
-# reading .env file
-environ.Env.read_env()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# reading .env file
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -82,12 +87,7 @@ WSGI_APPLICATION = 'bada_kinder_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {"default": env.db()}
 
 
 # Password validation
@@ -125,15 +125,30 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-STATIC_URL = '/static/'
+AWS_S3_ACCESS_KEY_ID = env('DJANGO_AWS_S3_ACCESS_KEY_ID')
+AWS_S3_SECRET_ACCESS_KEY = env('DJANGO_AWS_S3_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = env('DJANGO_AWS_S3_REGION_NAME')
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+# s3 static settings
+AWS_LOCATION = 'django_static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+
+# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = "main"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/"
+
+CMS_BASE_URL = env('CMS_BASE_URL')

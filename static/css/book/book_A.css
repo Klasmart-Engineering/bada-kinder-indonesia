@@ -11,7 +11,7 @@
 .contents_wrap .side_bar .menu_list .menu_icon{vertical-align: text-bottom;}
 .contents_wrap .side_bar .menu_list .menu .menu_title{font-family: 'Nanum Gothic', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin-left: 12px; letter-spacing: -1px;}
 .contents_wrap .side_bar .menu_list .menu .icon_arrow{font-size: 25px; float: right; margin: 2px 30px 0 0; color: #fff;}
-.menu_index{text-align: left; background-color: #fff; padding: 9px 90px; font-family: 'Source Sans Pro', sans-serif; font-size: 19px; cursor: pointer; text-decoration: none;}
+.menu_index{text-align: left; background-color: #fff; padding: 9px 85px; font-family: 'Source Sans Pro', sans-serif; font-size: 19px; cursor: pointer; text-decoration: none;}
 .menu_index a{color: #666;}
 .icon_arrow.on{transform: rotate(180deg);}
 .week_icon_1{background-image: url('/static/image/book/week-1.png'); width: 116px; height: 133px; float: left; margin-top: 11px;}

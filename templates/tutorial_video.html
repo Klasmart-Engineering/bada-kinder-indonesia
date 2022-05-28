@@ -1,0 +1,63 @@
+{% extends "component/sidebar.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/contents/nemies.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+            
+<div class="video_area">
+	<div class="contents_area">
+		<!-- 이미지파일 영문으로 변경 후 진행 -->
+		<div class="contaior">
+					
+					<div class="contents_area">
+						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal45" src="http://s3.ap-northeast-2.amazonaws.com/bv-kidsloop/media/video-image/PhonicsSong/Teddy_Bear_Teddy_Bear_Say_Goodnight.PNG" alt="">
+						<div class="video_title">
+							Video 1
+						</div>
+					</div>
+					<div id="vimeo_modal45" class="modal fade" role="dialog">
+						<div id="custom_modal_body" class="modal-dialog">
+							<div class="vimeo_wrap"></div>
+						</div>
+					</div>
+					<div style="display: none;">
+						<iframe id="vimeo45" width="1300" height="800" src="https://player.vimeo.com/video/698067310?h=3272aec15e" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+					</div>
+					<script>
+						$('#vimeo_modal45').on('show.bs.modal', function (e) {
+							$q = $('#vimeo45').clone().removeAttr('id')
+							$a = $q.attr('src') + '&autoplay=1'
+							$(this).find($('.vimeo_wrap')).append($q.attr('src', $a))
+						})
+						$('#vimeo_modal45').on('hidden.bs.modal', function (e) {
+							$(this).find($('.vimeo_wrap')).empty()
+						})
+					</script>
+				
+			
+		</div>
+		<div class="page_nav">
+			
+			
+				<a name="page_btn" id="page1" class="on" href="?page=1">1</a>
+			
+				<a name="page_btn" id="page2"  href="?page=2">2</a>
+			
+
+			
+				<a class="dir" href="?page=2" style="margin-left:4px">
+					<img src="{% static 'image/index/btn_page_next.gif' %}" alt="다음" />
+
+				</a>
+				<a class="dir" href="?page=2">
+					<img src="{% static 'image/index/btn_page_last.gif' %}" alt="끝으로" />
+				</a>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

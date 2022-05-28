@@ -1,15 +1,19 @@
-from django.views.generic import TemplateView
+import requests
+
+from django.conf import settings
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
-import requests
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
+@login_required
 def main(request):
-    CMS_BASE_URL = 'http://localhost:1337'
     r = requests.get(
-        f'{CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge'
+        f'{settings.CMS_BASE_URL}/api/levels?'
+        f'populate=thumbnail&populate=vertical_cover&'
+        f'populate=age_badge&sort[0]=ordering'
     )
     data = r.json()['data']
     print(data)
@@ -17,29 +21,32 @@ def main(request):
     return render(request, 'main.html', context)
 
 
+@login_required
 def book_list(request, level_id):
-    # http://localhost:1337/api/books?populate=thumbnail&filter[level][id]=1
-    CMS_BASE_URL = 'http://localhost:1337'
+    
     url_params = {
         "populate": "thumbnail",
         "filters[level][id]": level_id
     }
     r = requests.get(
-        f'{CMS_BASE_URL}/api/books',
+        f'{settings.CMS_BASE_URL}/api/books',
         params=url_params
     )
-    data = r.json()['data']
+    # data = r.json()['data']
+    data = sorted(r.json()['data'], key=lambda d: d['attributes']['book_number'])
     print(data)
     context = {'data': data}
     return render(request, 'book_list.html', context)
 
 
+@login_required
 def book_detail(request, book_id):
-    # http://localhost:1337/api/books/1?populate=week.days.videos&populate=week.days.thumbnail&populate=week.thumbnail&populate=level
-    CMS_BASE_URL = 'http://localhost:1337'
     
     r = requests.get(
-        f'{CMS_BASE_URL}/api/books/{book_id}?populate=weeks.days.videos&populate=weeks.week_detail&populate=weeks.week_detail.thumbnail&populate=weeks.days.day.thumbnail&populate=weeks.thumbnail&populate=level',
+        f'{settings.CMS_BASE_URL}/api/books/{book_id}?'
+        f'populate=weeks.days.videos&populate=weeks.week_detail&'
+        f'populate=weeks.week_detail.thumbnail&'
+        f'populate=weeks.days.day.thumbnail&populate=weeks.thumbnail&populate=level',
     )
     data = r.json()['data']
     print(data)
@@ -68,17 +75,39 @@ def book_detail(request, book_id):
 class Login(LoginView):
     template_name = 'login.html'
 
+class Checkhomework(TemplateView):
+    template_name = "checkhomework.html"
+
 class Main(LoginRequiredMixin, TemplateView):
     template_name = "main.html"
+
+
+def tutorial_video(request):
+    CMS_BASE_URL = 'http://localhost:1337'
+    r = requests.get(
+        f'{CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data}
+    return render(request, 'tutorial_video.html', context)
+
+def tutorial_pdf(request):
+    CMS_BASE_URL = 'http://localhost:1337'
+    r = requests.get(
+        f'{CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data}
+    return render(request, 'tutorial_pdf.html', context)
+
 
 class LevelA(TemplateView):
     template_name = "level/A/index.html"
 
 class Book_1A(TemplateView):
     template_name = "level/A/1.html"
-
-class Checkhomework(TemplateView):
-    template_name = "checkhomework.html"
 
 class Board_Notice(TemplateView):
     template_name = "board/notice/index.html"

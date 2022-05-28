@@ -2,44 +2,21 @@
 {% load static %}
 
 {% block content %}
-		<div class="content">
+<div class="content">
             
-<div class="level_box_area">
-	<!-- <a href="/level/A" class="level_box_1" style="background-image: url('{% static 'image/index/a-bg.png' %}');">
-		<div class="age_badge_area">
-			<img class="age_badge" src="{% static 'image/index/5.png' %}" alt="">
-		</div>
-		<div class="level_class_area">
-			<img class="level_class" src="{% static 'image/index/level-a.png' %}" alt="">
-		</div>
-	</a>
-	<a href="/level/B" class="level_box_2" style="background-image: url('{% static 'image/index/b-bg.png' %}');">
-		<div class="age_badge_area">
-			<img class="age_badge" src="{% static 'image/index/6.png' %}" alt="">
-		</div>
-		<div class="level_class_area">
-			<img class="level_class" src="{% static 'image/index/level-b.png' %}" alt="">
-		</div>
-	</a>
-	<a href="/level/C" class="level_box_3" style="background-image: url('{% static 'image/index/c-bg.png' %}');">
-		<div class="age_badge_area">
-			<img class="age_badge" src="{% static 'image/index/7.png' %}" alt="">
-		</div>
-		<div class="level_class_area">
-			<img class="level_class" src="{% static 'image/index/level-c.png' %}" alt="">
-		</div>
-	</a> -->
-	{% for entry in data %}
-	<!-- {{entry}} -->
-	<a href="/level/{{entry.id}}" class="level_box_{{forloop.counter}}" 
-		style="background-image: url('{{ entry.attributes.vertical_cover.data.attributes.url }}');">
-		<div class="age_badge_area">
-			<img class="age_badge" src="{{ entry.attributes.age_badge.data.attributes.url }}" alt="" height="100px">
-		</div>
-		<div class="level_class_area">
-			<img class="level_class" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
-		</div>
-	</a>
-	{% endfor %}
+	<div class="level_box_area">
+		{% for entry in data %}
+		<!-- {{entry}} -->
+		<a href="/level/{{entry.id}}" class="level_box_{{forloop.counter}}" 
+			style="background-image: url('{{ entry.attributes.vertical_cover.data.attributes.url }}');">
+			<div class="age_badge_area">
+				<img class="age_badge" src="{{ entry.attributes.age_badge.data.attributes.url }}" alt="" height="100px">
+			</div>
+			<div class="level_class_area">
+				<img class="level_class" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
+			</div>
+		</a>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
