@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),  
-    path("", views.Login.as_view(), name="login"),
+    path("", views.Login.as_view(redirect_authenticated_user=True), name="login"),
     path("main", views.main, name="main"),
     path("level/<int:level_id>/", views.book_list, name="book_list"),
     path("book/<int:book_id>/", views.book_detail, name="book_detail"),

@@ -81,21 +81,20 @@ class Checkhomework(TemplateView):
 class Main(LoginRequiredMixin, TemplateView):
     template_name = "main.html"
 
-
+@login_required
 def tutorial_video(request):
-    CMS_BASE_URL = 'http://localhost:1337'
     r = requests.get(
-        f'{CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
     )
     data = r.json()['data']
     print(data)
     context = {'data': data}
     return render(request, 'tutorial_video.html', context)
 
+@login_required
 def tutorial_pdf(request):
-    CMS_BASE_URL = 'http://localhost:1337'
     r = requests.get(
-        f'{CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
     )
     data = r.json()['data']
     print(data)
