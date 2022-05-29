@@ -13,7 +13,8 @@ def main(request):
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/levels?'
         f'populate=thumbnail&populate=vertical_cover&'
-        f'populate=age_badge&sort[0]=ordering'
+        f'populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
     print(data)
@@ -25,12 +26,13 @@ def main(request):
 def book_list(request, level_id):
     
     url_params = {
-        "populate": "thumbnail",
+        "populate": "level.thumbnail",
         "filters[level][id]": level_id
     }
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/books',
-        params=url_params
+        params=url_params,
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     # data = r.json()['data']
     data = sorted(r.json()['data'], key=lambda d: d['attributes']['book_number'])
@@ -47,6 +49,7 @@ def book_detail(request, book_id):
         f'populate=weeks.days.videos&populate=weeks.week_detail&'
         f'populate=weeks.week_detail.thumbnail&'
         f'populate=weeks.days.day.thumbnail&populate=weeks.thumbnail&populate=level',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
     print(data)
@@ -84,7 +87,9 @@ class Main(LoginRequiredMixin, TemplateView):
 @login_required
 def tutorial_video(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
+        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
     print(data)
@@ -94,7 +99,9 @@ def tutorial_video(request):
 @login_required
 def tutorial_pdf(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&populate=vertical_cover&populate=age_badge&sort[0]=ordering'
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
+        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
     print(data)

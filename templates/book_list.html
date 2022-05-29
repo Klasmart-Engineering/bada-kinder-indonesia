@@ -23,7 +23,8 @@
 
 {% block sidebar %}
 	<div class="side_bar">
-		<img class="side_logo" src="{% static 'image/level_page/level-a.png' %}" alt="">
+		<!-- {{ data.0.attributes.level.data.attributes.thumbnail.data.attributes.url}} -->
+		<img class="side_logo" src="{{ data.0.attributes.level.data.attributes.thumbnail.data.attributes.url}}" alt="">
 	</div>
 {% endblock %}
 

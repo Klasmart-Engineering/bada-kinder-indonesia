@@ -12,5 +12,6 @@ then
 fi
 
 python manage.py migrate
+python manage.py create_super_user_if_not_exist
 
 exec "$@"

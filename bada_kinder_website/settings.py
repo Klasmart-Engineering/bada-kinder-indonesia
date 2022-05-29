@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'utils'
 ]
 
 MIDDLEWARE = [
@@ -163,3 +165,5 @@ LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/"
 
 CMS_BASE_URL = env('CMS_BASE_URL')
+DEFAULT_ADMIN_PASSWORD = env('DEFAULT_ADMIN_PASSWORD')
+STRAPI_API_KEY = env('STRAPI_API_KEY')
