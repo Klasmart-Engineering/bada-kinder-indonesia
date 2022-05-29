@@ -26,7 +26,7 @@ Follow these steps to install the necessary tools:
 * Go to the root dir of this project.
 * Run: `docker-compose build` for initial start.
 * Run: `docker-compose up`.
-* Run: `docker ps` to make sure all container is ready. You should see something like this:
+* Run: `docker ps` to make sure all container is ready.
 * Also if you want to start the dockers in the next time (after shutdown your pc) run `docker-compose up`
 * Open second terminal.
 * Change directory to `bada-kinder-cms`.
