@@ -109,6 +109,45 @@ def tutorial_pdf(request):
     return render(request, 'tutorial_pdf.html', context)
 
 
+@login_required
+def rpp(request):
+    r = requests.get(
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
+        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data}
+    return render(request, 'rpp.html', context)
+
+
+@login_required
+def activity_book(request):
+    r = requests.get(
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
+        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data}
+    return render(request, 'activity_book.html', context)
+
+
+@login_required
+def tutorial_pdf_detail(request):
+    r = requests.get(
+        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
+        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data}
+    return render(request, 'tutorial_pdf_detail.html', context)
+
+
 class LevelA(TemplateView):
     template_name = "level/A/index.html"
 
