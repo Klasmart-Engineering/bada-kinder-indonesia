@@ -21,8 +21,8 @@ Follow these steps to install the necessary tools:
 * Older versions of docker-compose do not support all the features required by docker-compose.yaml file, so double check that your version meets the minimum version requirements.
 
 ### Configuration ###
-* Set values for `.env` file and `bada-kinder-cms/.env` (Ask Indonesian Tech Team for both `.env` values).
 * Clone this repo.
+* Set values for `.env` file and `bada-kinder-cms/.env` (Ask Indonesian Tech Team for both `.env` values).
 * Go to the root dir of this project.
 * Run: `docker-compose build` for initial start.
 * Run: `docker-compose up`.
