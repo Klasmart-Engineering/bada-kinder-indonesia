@@ -12,19 +12,21 @@
 	<div class="contents_area">
 		<!-- 이미지파일 영문으로 변경 후 진행 -->
 		<div class="contaior">
-					
+				{% for entry in data %}
+				 
+				 
 					<div class="contents_area">
-						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal45" src="{% static 'image/pdf_thumbnail.png' %}" alt="">
+						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal45" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
 						<div class="video_title">
-							PDF 1
+							{{ entry.attributes.title }}
 						</div>
 					</div>
 					<div id="vimeo_modal45" class="modal fade" role="dialog">
 						<div class="modal-dialog" style="width: 1200px;">
-							<iframe height="800px" width="100%" src="http://s3.ap-northeast-2.amazonaws.com/bv-kidsloop/media/pdf/studyplan/Level_A_%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC_%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3_ZDC69gr.pdf" frameborder="0"></iframe>
+							<iframe height="800px" width="100%" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0"></iframe>
 						</div>
 					</div>
-					
+				{% endfor %}
 					<!-- <script>
 						$('#vimeo_modal45').on('show.bs.modal', function (e) {
 							$q = $('#vimeo45').clone().removeAttr('id')
@@ -43,7 +45,7 @@
 			
 				<a name="page_btn" id="page1" class="on" href="?page=1">1</a>
 			
-				<a name="page_btn" id="page2"  href="?page=2">2</a>
+				<!-- <a name="page_btn" id="page2"  href="?page=2">2</a> -->
 			
 
 			

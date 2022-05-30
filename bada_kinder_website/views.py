@@ -87,8 +87,7 @@ class Main(LoginRequiredMixin, TemplateView):
 @login_required
 def tutorial_video(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
-        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        f'{settings.CMS_BASE_URL}/api/video-tutorials?populate=thumbnail&populate=file',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -99,8 +98,7 @@ def tutorial_video(request):
 @login_required
 def tutorial_pdf(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
-        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        f'{settings.CMS_BASE_URL}/api/pdf-tutorials?populate=thumbnail&populate=file',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -112,8 +110,7 @@ def tutorial_pdf(request):
 @login_required
 def rpp(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
-        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -125,8 +122,7 @@ def rpp(request):
 @login_required
 def activity_book(request):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?populate=thumbnail&'
-        f'populate=vertical_cover&populate=age_badge&sort[0]=ordering',
+        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
