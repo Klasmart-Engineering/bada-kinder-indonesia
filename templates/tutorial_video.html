@@ -14,27 +14,43 @@
 		<div class="contaior">
 			{% for entry in data %}	
 					<div class="contents_area">
-						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal{{ entry.id }}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
+						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal_{{ entry.id }}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
 						<div class="video_title">
 							{{ entry.attributes.title }}
 							
 						</div>
 					</div>
-					<div id="vimeo_modal{{ entry.id }}" class="modal fade" role="dialog">
+					<div id="vimeo_modal_{{ entry.id }}" class="modal fade" role="dialog">
 						<div id="custom_modal_body" class="modal-dialog">
 							<div class="vimeo_wrap"></div>
 						</div>
 					</div>
 					<div style="display: none;">
-						<iframe id="vimeo45" width="1300" height="800" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+						<!-- <iframe id="vimeo{{ entry.id }}" width="1300" height="800" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
+						<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+							<source 
+								src="{{ entry.attributes.file.data.attributes.url }}"
+								type="video/mp4"
+							>
+							Your browser does not support HTML video.
+						</video>
 					</div>
 					<script>
-						$('#vimeo_modal{{ entry.id }}').on('show.bs.modal', function (e) {
-							$q = $('#vimeo{{ entry.id }}').clone().removeAttr('id')
-							$a = $q.attr('src') + '&autoplay=1'
-							$(this).find($('.vimeo_wrap')).append($q.attr('src', $a))
+						// $('#vimeo_modal{{ entry.id }}').on('show.bs.modal', function (e) {
+						// 	$q = $('#vimeo{{ entry.id }}').clone().removeAttr('id')
+						// 	$a = $q.attr('src') + '&autoplay=1'
+						// 	$(this).find($('.vimeo_wrap')).append($q.attr('src', $a))
+						// })
+						// $('#vimeo_modal{{ entry.id }}').on('hidden.bs.modal', function (e) {
+						// 	$(this).find($('.vimeo_wrap')).empty()
+						// })
+
+						$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
+							$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
+							$a = ' '
+							$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
 						})
-						$('#vimeo_modal{{ entry.id }}').on('hidden.bs.modal', function (e) {
+						$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
 							$(this).find($('.vimeo_wrap')).empty()
 						})
 					</script>
