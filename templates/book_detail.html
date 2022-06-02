@@ -10,6 +10,28 @@
 <div class="content">
             
 <style>
+.modal-content {
+  background-color: #fefefe;
+  margin: 90% auto; /* 15% from the top and centered */
+  padding: 50px;
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 </style>
 <div class="book_calendar_area">
@@ -32,11 +54,39 @@
 			{% for entry in week_1 %}
 				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
+				
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap"></div>
+						<div class="vimeo_wrap">
+							{% if entry.videos.data|length > 1 %}
+							<div class="modal-content" >
+								
+								
+								{% for video in entry.videos.data %}
+									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+										<p><a href="#">{{video.attributes.name}}</a></p>
+									</div>
+								{% endfor %}
+								
+							  </div>
+							  {% endif %}
+						</div>
 					</div>
 				</div>
+				{% if entry.videos.data|length > 1 %}
+				{% for video in entry.videos.data %}
+									
+									<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
+					<div id="custom_modal_body" class="modal-dialog">
+						<div class="vimeo_wrap">
+							
+						</div>
+					</div>
+				</div>
+								{% endfor %}
+								{% endif %}
+
+
 			{% endfor %}
 			
 		</div>
@@ -91,13 +141,26 @@
 
 <div style="display: none;">
 	{% for entry in week_1 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
-		<source 
-			src="{{entry.videos.data.0.attributes.url}}"
-			type="video/mp4"
-		>
-		Your browser does not support HTML video.
-	</video>
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{video.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+			{% endfor %}
+		{% else %}
+			<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+				<source 
+					src="{{entry.videos.data.0.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+		{% endif %}
+		
 	{% endfor %}
 	{% for entry in week_2 %}
 	<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
@@ -130,15 +193,33 @@
 </div>
 <script>
 	{% for entry in week_1 %}
-		$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-			$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-			$a = ' '
-			$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-		})
-		$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-			$(this).find($('.vimeo_wrap')).empty()
-		})
+	
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
+					$('#vimeo_modal_{{entry.id}}').modal('hide');
+					
+					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
+					$a = ' '
+					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+				})
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
+					$(this).find($('.vimeo_wrap')).empty()
+				})
+			{% endfor %}
+		{% else %}
+			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
+				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
+				$a = ' '
+				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+			})
+			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
+				$(this).find($('.vimeo_wrap')).empty()
+			})
+		{% endif %}
+
 	{% endfor %}
+
 	{% for entry in week_2 %}
 		$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
 			$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')

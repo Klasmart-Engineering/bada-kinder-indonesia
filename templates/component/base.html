@@ -19,7 +19,19 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="http://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
-        
+        <style>
+			video::-internal-media-controls-download-button {
+    display:none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden !important;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px) !important; /* Adjust as needed */
+}
+</style>
 	</head>
 
 	<body>
