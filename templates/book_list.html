@@ -2,17 +2,19 @@
 {% load static %}
 
 {% block extra_head %}
-	<link rel="stylesheet" href="{% static 'css/level_page/level_A.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'css/level_page/' %}{{ data.0.attributes.level.data.attributes.css_name}}">
+
 	<style>
 	    .book_icon{
-	    	background-image: url('{% static 'image/level_page/book.png' %}');
+	    	background-image: url("{% static 'image/level_page/' %}book-{{ data.0.attributes.level.data.attributes.level_letter}}.png");
 	    	width: 202px;
 	    	height: 206px;
 	    	margin: 0 0 0 4px;
 	    	float: left;
 	    }
 	    .book_icon:hover{
-	    	background-image: url('{% static 'image/level_page/book-on.png' %}');
+	    	background-image: url("{% static 'image/level_page/' %}book-{{ data.0.attributes.level.data.attributes.level_letter}}-on.png");
 	    	width: 202px;
 	    	height: 206px;
 	    	margin: 0 0 0 4px;
@@ -30,14 +32,15 @@
 
 {% block content %}
 
-<div class="content" style="background-image: url('{% static 'image/level_page/ch-image.png' %}');">
+
+<div class="content" style="background-image: url('{% static 'image/level_page/' %}image-{{ data.0.attributes.level.data.attributes.level_letter}}.png');">
             
 <div class="level_book_area">
 	<div class="row" style="margin: 110px 0 0 86px;">
 		{% if data.0 %}
 		<a href="/book/{{ data.0.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{% static 'image/level_page/book-1.png' %}" alt="">
+				<img src="{% static 'image/level_page/' %}book-1.png" alt="">
 			</div>
 		</a>
 		{% endif %}

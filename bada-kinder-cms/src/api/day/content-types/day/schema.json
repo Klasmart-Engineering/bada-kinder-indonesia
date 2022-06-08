@@ -33,6 +33,10 @@
     },
     "icon_class": {
       "type": "string"
+    },
+    "day_name": {
+      "type": "string",
+      "required": true
     }
   }
 }

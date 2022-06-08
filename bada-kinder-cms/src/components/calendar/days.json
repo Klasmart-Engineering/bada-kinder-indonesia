@@ -25,6 +25,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::day.day"
+    },
+    "video_names": {
+      "type": "json"
     }
   }
 }

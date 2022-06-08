@@ -1,0 +1,42 @@
+.level_book_area{
+}
+.side_logo{
+	text-align: center; 
+	color: #54b7e2;
+	margin-top: 67px;
+}
+.content{
+	background-color: #c3ecfd;; 
+	height: 830px; 
+	background-image: url('/static/image/level_page/image-c.png'); 
+	background-repeat: 
+	no-repeat; 
+	background-position: 801px 332px;
+}
+.side_bar{
+	background-color: #54b7e2;
+	text-align: center; 
+	height: 830px;
+}
+.book_icon{
+	background-image: url('/static/image/level_page/book-c.png'); 
+	width: 202px; 
+	height: 206px; 
+	margin: 0 0 0 4px; 
+	float: left;
+}
+.book_icon:hover{
+	background-image: url('/static/image/level_page/book-c-on.png'); 
+	width: 202px; 
+	height: 206px; 
+	margin: 0 0 0 4px; 
+	float: left;
+}
+.book_icon:hover .book_title{
+	text-align: center; 
+	margin-top: 29px;
+}
+.book_title{
+	text-align: center; 
+	margin-top: 23px;
+}

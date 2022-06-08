@@ -59,13 +59,22 @@
 					<div id="custom_modal_body" class="modal-dialog">
 						<div class="vimeo_wrap">
 							{% if entry.videos.data|length > 1 %}
-							<div class="modal-content" >
+							<div class="modal-content" style="min-width: 350px;">
 								
 								
 								{% for video in entry.videos.data %}
+									{% with outer_counter=forloop.counter %}
+
 									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
-										<p><a href="#">{{video.attributes.name}}</a></p>
+										<p><a href="#">
+											{% for name in entry.video_names %}
+												{% if forloop.counter == outer_counter %}
+													{{ name }}
+												{% endif %}
+											{% endfor %}
+										</a></p>
 									</div>
+									{% endwith %}
 								{% endfor %}
 								
 							  </div>

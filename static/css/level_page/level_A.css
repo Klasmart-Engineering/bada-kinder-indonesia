@@ -1,6 +1,24 @@
 .level_book_area{}
-.side_logo{text-align: center; color: yellow; margin-top: 67px;}
-.content{background-color: #fffdec; height: 830px; background-repeat: no-repeat; background-position: 860px 250px;}
-.side_bar{background-color: #f7c846; text-align: center; height: 830px;}
-.book_icon:hover .book_title{text-align: center; margin-top: 29px;}
-.book_title{text-align: center; margin-top: 23px;}
+.side_logo{
+	text-align: center; 
+	color: yellow; 
+	margin-top: 67px;
+}
+.content{
+	background-color: #fffdec; 
+	height: 830px; 
+	background-repeat: no-repeat; 
+	background-position: 860px 250px;
+}
+.side_bar{
+	background-color: #f7c846; 
+	text-align: center; 
+	height: 830px;
+}
+.book_icon:hover .book_title{
+	text-align: center; 
+	margin-top: 29px;
+}
+.book_title{
+	text-align: center; margin-top: 23px;
+}
