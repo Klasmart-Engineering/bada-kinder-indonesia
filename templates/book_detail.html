@@ -44,7 +44,7 @@
 			<div class="book_num">
 				<img class="img_detail" src="{% static 'image/book/month' %}{{level_letter|upper}}.png" alt="">
 			</div>
-			<div class="font_detail">{{ data.attributes.book_number }}</div>
+			<div class="font_detail">{{ data.attributes.month_number }}</div>
 		</div>
 	</div>
 	
@@ -54,6 +54,58 @@
 		<div class="day_area">
 			
 			{% for entry in week_1 %}
+				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
+				</div>
+				<!-- {{entry.videos.data}} -->
+				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
+					<div id="custom_modal_body" class="modal-dialog">
+						<div class="vimeo_wrap">
+							{% if entry.videos.data|length > 1 %}
+							<div class="modal-content" style="min-width: 350px;">						
+								{% for video in entry.videos.data %}
+									{% with outer_counter=forloop.counter %}
+
+									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+										<p><a href="#">
+											{% for name in entry.video_names %}
+												{% if forloop.counter == outer_counter %}
+													{{ name }}
+												{% endif %}
+											{% endfor %}
+										</a></p>
+									</div>
+									{% endwith %}
+								{% endfor %}
+								
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% if entry.videos.data|length > 1 %}
+					{% for video in entry.videos.data %}
+									
+					<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
+						<div id="custom_modal_body" class="modal-dialog">
+							<div class="vimeo_wrap">
+								
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% endif %}
+
+
+			{% endfor %}
+			
+		</div>
+	</div>
+	<div class="row" style="margin-left: 164px;">
+		<div class="week_icon_2">
+		</div>
+		<div class="day_area">
+			
+			{% for entry in week_2 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
 				<!-- {{entry.videos.data}} -->
@@ -103,49 +155,111 @@
 		</div>
 	</div>
 	<div class="row" style="margin-left: 164px;">
-		<div class="week_icon_2">
-		</div>
-		<div class="day_area">
-			
-			{% for entry in week_2 %}
-				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
-				</div>
-				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap"></div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
-	<div class="row" style="margin-left: 164px;">
 		<div class="week_icon_3">
 		</div>
 		<div class="day_area">
+			
 			{% for entry in week_3 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
+				<!-- {{entry.videos.data}} -->
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap"></div>
+						<div class="vimeo_wrap">
+							{% if entry.videos.data|length > 1 %}
+							<div class="modal-content" style="min-width: 350px;">
+								
+								
+								{% for video in entry.videos.data %}
+									{% with outer_counter=forloop.counter %}
+
+									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+										<p><a href="#">
+											{% for name in entry.video_names %}
+												{% if forloop.counter == outer_counter %}
+													{{ name }}
+												{% endif %}
+											{% endfor %}
+										</a></p>
+									</div>
+									{% endwith %}
+								{% endfor %}
+								
+							  </div>
+							  {% endif %}
+						</div>
 					</div>
 				</div>
+				{% if entry.videos.data|length > 1 %}
+				{% for video in entry.videos.data %}
+									
+									<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
+					<div id="custom_modal_body" class="modal-dialog">
+						<div class="vimeo_wrap">
+							
+						</div>
+					</div>
+				</div>
+								{% endfor %}
+								{% endif %}
+
+
 			{% endfor %}
+			
 		</div>
 	</div>
 	<div class="row" style="margin-left: 164px;">
 		<div class="week_icon_4">
 		</div>
 		<div class="day_area">
+			
 			{% for entry in week_4 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
+				<!-- {{entry.videos.data}} -->
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap"></div>
+						<div class="vimeo_wrap">
+							{% if entry.videos.data|length > 1 %}
+							<div class="modal-content" style="min-width: 350px;">
+								
+								
+								{% for video in entry.videos.data %}
+									{% with outer_counter=forloop.counter %}
+
+									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+										<p><a href="#">
+											{% for name in entry.video_names %}
+												{% if forloop.counter == outer_counter %}
+													{{ name }}
+												{% endif %}
+											{% endfor %}
+										</a></p>
+									</div>
+									{% endwith %}
+								{% endfor %}
+								
+							  </div>
+							  {% endif %}
+						</div>
 					</div>
 				</div>
+				{% if entry.videos.data|length > 1 %}
+				{% for video in entry.videos.data %}
+									
+					<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
+						<div id="custom_modal_body" class="modal-dialog">
+							<div class="vimeo_wrap">
+								
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% endif %}
+
+
 			{% endfor %}
+			
 		</div>
 	</div>
 </div>
@@ -162,7 +276,7 @@
 				Your browser does not support HTML video.
 			</video>
 			{% endfor %}
-		{% else %}
+		{% elif entry.videos.data|length == 1 %}
 			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
@@ -170,35 +284,100 @@
 				>
 				Your browser does not support HTML video.
 			</video>
+		{% else %}
+			<div id="vimeo_{{entry.id}}">
+				<div class="modal-content" style="min-width: 350px;">	
+					We're sorry, there is no video available today!
+				</div>
+			</div>
 		{% endif %}
+		
 		
 	{% endfor %}
 	{% for entry in week_2 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
-		<source 
-			src="{{entry.videos.data.0.attributes.url}}"
-			type="video/mp4"
-		>
-		Your browser does not support HTML video.
-	</video>
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{video.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+			{% endfor %}
+		{% elif entry.videos.data|length == 1 %}
+			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{entry.videos.data.0.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+		{% else %}
+			<div id="vimeo_{{entry.id}}">
+				<div class="modal-content" style="min-width: 350px;">	
+					We're sorry, there is no video available today!
+				</div>
+			</div>
+		{% endif %}
+		
 	{% endfor %}
 	{% for entry in week_3 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
-		<source 
-			src="{{entry.videos.data.0.attributes.url}}"
-			type="video/mp4"
-		>
-		Your browser does not support HTML video.
-	</video>
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{video.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+			{% endfor %}
+		{% elif entry.videos.data|length == 1 %}
+			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{entry.videos.data.0.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+		{% else %}
+			<div id="vimeo_{{entry.id}}">
+				<div class="modal-content" style="min-width: 350px;">	
+					We're sorry, there is no video available today!
+				</div>
+			</div>
+		{% endif %}
+
+		
 	{% endfor %}
 	{% for entry in week_4 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
-		<source 
-			src="{{entry.videos.data.0.attributes.url}}"
-			type="video/mp4"
-		>
-		Your browser does not support HTML video.
-	</video>
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{video.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+			{% endfor %}
+		{% elif entry.videos.data|length == 1 %}
+			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+				<source 
+					src="{{entry.videos.data.0.attributes.url}}"
+					type="video/mp4"
+				>
+				Your browser does not support HTML video.
+			</video>
+		{% else %}
+			<div id="vimeo_{{entry.id}}">
+				<div class="modal-content" style="min-width: 350px;">	
+					We're sorry, there is no video available today!
+				</div>
+			</div>
+		{% endif %}
+		
 	{% endfor %}
 	
 </div>
@@ -233,34 +412,85 @@
 	{% endfor %}
 
 	{% for entry in week_2 %}
-		$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-			$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-			$a = ' '
-			$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-		})
-		$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-			$(this).find($('.vimeo_wrap')).empty()
-		})
+	
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
+					$('#vimeo_modal_{{entry.id}}').modal('hide');
+					
+					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
+					$a = ' '
+					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+				})
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
+					$(this).find($('.vimeo_wrap')).empty()
+				})
+			{% endfor %}
+		{% else %}
+			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
+				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
+				$a = ' '
+				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+			})
+			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
+				$(this).find($('.vimeo_wrap')).empty()
+			})
+		{% endif %}
+
 	{% endfor %}
 	{% for entry in week_3 %}
-		$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-			$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-			$a = ' '
-			$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-		})
-		$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-			$(this).find($('.vimeo_wrap')).empty()
-		})
+	
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
+					$('#vimeo_modal_{{entry.id}}').modal('hide');
+					
+					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
+					$a = ' '
+					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+				})
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
+					$(this).find($('.vimeo_wrap')).empty()
+				})
+			{% endfor %}
+		{% else %}
+			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
+				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
+				$a = ' '
+				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+			})
+			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
+				$(this).find($('.vimeo_wrap')).empty()
+			})
+		{% endif %}
+
 	{% endfor %}
 	{% for entry in week_4 %}
-		$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-			$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-			$a = ' '
-			$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-		})
-		$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-			$(this).find($('.vimeo_wrap')).empty()
-		})
+	
+		{% if entry.videos.data|length > 1 %}
+			{% for video in entry.videos.data %}
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
+					$('#vimeo_modal_{{entry.id}}').modal('hide');
+					
+					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
+					$a = ' '
+					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+				})
+				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
+					$(this).find($('.vimeo_wrap')).empty()
+				})
+			{% endfor %}
+		{% else %}
+			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
+				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
+				$a = ' '
+				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
+			})
+			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
+				$(this).find($('.vimeo_wrap')).empty()
+			})
+		{% endif %}
+
 	{% endfor %}
 	
 </script>

@@ -27,7 +27,8 @@
       "min": 1
     },
     "level_letter": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -12,10 +12,14 @@
       "repeatable": true,
       "component": "calendar.days"
     },
-    "week_detail": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::week.week"
+    "week_name": {
+      "type": "enumeration",
+      "enum": [
+        "week_1",
+        "week_2",
+        "week_3",
+        "week_4"
+      ]
     }
   }
 }

@@ -37,7 +37,7 @@ def book_list(request, level_id):
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     # data = r.json()['data']
-    data = sorted(r.json()['data'], key=lambda d: d['attributes']['book_number'])
+    data = sorted(r.json()['data'], key=lambda d: d['attributes']['month_number'])
     print(data)
     context = {'data': data}
     return render(request, 'book_list.html', context)
@@ -54,10 +54,11 @@ def book_detail(request, book_id):
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
+    # print(data)
 
     weeks = data['attributes']['weeks']
-    ordered_weeks = sorted(weeks, key=lambda d: d['week_detail']['data']['attributes']['ordering']) 
+    print('week', weeks[0])
+    ordered_weeks = sorted(weeks, key=lambda d: d['week_name']) 
     week_1 = sorted(ordered_weeks[0]['days'], key=lambda d: d['day']['data']['attributes']['ordering'])
     week_2 = sorted(ordered_weeks[1]['days'], key=lambda d: d['day']['data']['attributes']['ordering'])
     week_3 = sorted(ordered_weeks[2]['days'], key=lambda d: d['day']['data']['attributes']['ordering'])
