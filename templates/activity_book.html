@@ -16,7 +16,7 @@
 					<div class="contents_area">
 						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal45" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
 						<div class="video_title">
-							{{ entry.attributes.title }}
+							{{kind}}{{ entry.attributes.title }}
 						</div>
 					</div>
 					<div id="vimeo_modal45" class="modal fade" role="dialog">
@@ -39,7 +39,7 @@
 				
 			
 		</div>
-		<div class="page_nav">
+		<!-- <div class="page_nav">
 			
 			
 				<a name="page_btn" id="page1" class="on" href="?page=1">1</a>
@@ -56,7 +56,7 @@
 					<img src="{% static 'image/index/btn_page_last.gif' %}" alt="끝으로" />
 				</a>
 			
-		</div>
+		</div> -->
 	</div>
 </div>
 {% endblock %}

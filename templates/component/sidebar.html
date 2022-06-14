@@ -19,6 +19,12 @@
 			<div class="menu_index">
 				<a href="/activity-book">Activity Book</a>
 			</div>
+			<div class="menu_index">
+				<a href="/course-book">Course Book</a>
+			</div>
+			<div class="menu_index">
+				<a href="/story-book">Story Book</a>
+			</div>
 		</div>
 		
 		<!-- <div class="menu_line"></div>
@@ -69,99 +75,7 @@
 		</div>
 	</div>
 </div>
-<div class="sub_side_bar">
-	<div class="menu_list" id="accordion">
-		<div class="plan_acc">
-			<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_plan">
-				<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-				<span class="menu_title">수업운영안</span>
-				<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
-			</div>
-			<div id="menu_plan" class="panel-collapse collapse">
-				<div class="sub_menu" data-toggle="collapse" data-parent="#accordion" href="#plan_levelA" style="background-color: yellow; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a>Level A (5세)</a>
-				</div>
-				<div id="plan_levelA" class="panel-collapse collapse">
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=1&type=1">연간 커리큘럼</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=1&type=2">활용 가이드</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=1&type=3">월간 계획안</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=1&type=4">월간티칭가이드</a>
-					</div>
-					<!-- <div class="sub_menu_index">
-						<a href="/board/studyplan?level=1&type=5">월간티칭가이드(20분)</a>
-					</div> -->
-				</div>
-				<div class="sub_menu" data-toggle="collapse" data-parent="#accordion" href="#plan_levelB" style="background-color: #71e518; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a href="/board/studyplan">Level B (6세)</a>
-				</div>
-				<div id="plan_levelB" class="panel-collapse collapse">
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=2&type=1">연간 커리큘럼</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=2&type=2">활용 가이드</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=2&type=3">월간 계획안</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=2&type=4">월간티칭가이드</a>
-					</div>
-					<!-- <div class="sub_menu_index">
-						<a href="/board/studyplan?level=2&type=5">월간티칭가이드(20분)</a>
-					</div> -->
-				</div>
-				<div class="sub_menu"  data-toggle="collapse" data-parent="#accordion" href="#plan_levelC" style="background-color: #18b5e5; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a>Level C (7세)</a>
-				</div>
-				<div id="plan_levelC" class="panel-collapse collapse">
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=3&type=1">연간 커리큘럼</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=3&type=2">활용 가이드</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=3&type=3">월간 계획안</a>
-					</div>
-					<div class="sub_menu_index">
-						<a href="/board/studyplan?level=3&type=4">월간티칭가이드</a>
-					</div>
-					<!-- <div class="sub_menu_index">
-						<a href="/board/studyplan?level=3&type=5">월간티칭가이드(20분)</a>
-					</div> -->
-				</div>
-			</div>
-		</div>
-		
 
-		<div class="archive_acc">
-			<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_archive">
-				<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-				<span class="menu_title">자료실</span>
-				<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
-			</div>
-			<div id="menu_archive" class="panel-collapse collapse">
-				<div class="sub_menu" style="background-color: yellow; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a href="/board/archive?level=1">Level A (5세)</a>
-				</div>
-				<div class="sub_menu" style="background-color: #71e518; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a href="/board/archive?level=2">Level B (6세)</a>
-				</div>
-				<div class="sub_menu" style="background-color: #18b5e5; border-radius: 10px; padding-right: 0; width: 180px;">
-					<a href="/board/archive?level=3">Level C (7세)</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 <script>
 	$('.menu').on('click',function(){
 		$(this).find('.icon_arrow').toggleClass('on')

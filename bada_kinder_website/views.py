@@ -25,13 +25,15 @@ def main(request):
 @login_required
 def book_list(request, level_id):
     
-    url_params = {
-        "populate": "level.thumbnail",
-        "filters[level][id]": level_id
-    }
+    # url_params = {
+    #     "populate": "level.thumbnail",
+    #     "filters[level][id]": level_id
+    # }
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/books',
-        params=url_params,
+        f'{settings.CMS_BASE_URL}/api/books?'
+        f'populate=level.thumbnail&populate=thumbnail&'
+        f'filters[level][id]={level_id}',
+        # params=url_params,
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     # data = r.json()['data']
@@ -127,7 +129,30 @@ def activity_book(request):
     )
     data = r.json()['data']
     print(data)
-    context = {'data': data}
+    context = {'data': data, 'kind': 'activity'}
+    return render(request, 'activity_book.html', context)
+
+
+@login_required
+def story_book(request):
+    r = requests.get(
+        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data, 'kind': 'story'}
+    return render(request, 'activity_book.html', context)
+
+@login_required
+def course_book(request):
+    r = requests.get(
+        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
+        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
+    )
+    data = r.json()['data']
+    print(data)
+    context = {'data': data, 'kind': 'course'}
     return render(request, 'activity_book.html', context)
 
 

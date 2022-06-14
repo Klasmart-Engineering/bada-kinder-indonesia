@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block extra_head %}
-	<link rel="stylesheet" href="{% static 'css/book/book_A.css' %}">
+	<link rel="stylesheet" href="{% static 'css/book/book' %}{{data.attributes.level.data.attributes.level_letter|upper}}.css">
 	<link href="https://www.dafontfree.net/embed/Y2hhbGtkdXN0ZXItcmVndWxhciZkYXRhLzE4NC9jLzE4MDQzMC9DaGFsa2R1c3Rlci50dGY" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block content %}
+{% with data.attributes.level.data.attributes.level_letter as level_letter %}
 <div class="content">
             
 <style>
@@ -38,10 +39,10 @@
 	<div class="title_area">
 		<div class="level_name">
 			<div class="lev_img_box">
-				<img class="level_image" src="{% static 'image/book/level_title.png' %}" alt="">
+				<img class="level_image" src="{% static 'image/book/level_title_' %}{{level_letter|upper}}.png" alt="">
 			</div>
 			<div class="book_num">
-				<img class="img_detail" src="{% static 'image/book/levelA.png' %}" alt="">
+				<img class="img_detail" src="{% static 'image/book/month' %}{{level_letter|upper}}.png" alt="">
 			</div>
 			<div class="font_detail">{{ data.attributes.book_number }}</div>
 		</div>
@@ -51,10 +52,11 @@
 		<div class="week_icon_1">
 		</div>
 		<div class="day_area">
+			
 			{% for entry in week_1 %}
 				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
-				
+				<!-- {{entry.videos.data}} -->
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
 						<div class="vimeo_wrap">
@@ -161,7 +163,7 @@
 			</video>
 			{% endfor %}
 		{% else %}
-			<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
 					type="video/mp4"
@@ -172,7 +174,7 @@
 		
 	{% endfor %}
 	{% for entry in week_2 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
 		<source 
 			src="{{entry.videos.data.0.attributes.url}}"
 			type="video/mp4"
@@ -181,7 +183,7 @@
 	</video>
 	{% endfor %}
 	{% for entry in week_3 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
 		<source 
 			src="{{entry.videos.data.0.attributes.url}}"
 			type="video/mp4"
@@ -190,7 +192,7 @@
 	</video>
 	{% endfor %}
 	{% for entry in week_4 %}
-	<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+	<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
 		<source 
 			src="{{entry.videos.data.0.attributes.url}}"
 			type="video/mp4"
@@ -200,6 +202,7 @@
 	{% endfor %}
 	
 </div>
+{% endwith %}
 <script>
 	{% for entry in week_1 %}
 	
@@ -261,4 +264,5 @@
 	{% endfor %}
 	
 </script>
+
 {% endblock %}
