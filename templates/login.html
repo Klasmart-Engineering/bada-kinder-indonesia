@@ -15,9 +15,9 @@
 			</div>
 			<div class="login_text_area">
 				<span class="title_text">Bada Kinder</span>
-				<p class="login_text">Masuk</p>
-				<p class="intro_text">Hai guru!<br>
-					Selamat datang di Bada Kinder Teacher
+				<p class="login_text">Login</p>
+				<p class="intro_text">Hai there<br>
+					Welcome to Bada Kinder!
 				</p>
 			</div>
 			<form method="POST" action="{% url 'login' %}" autocomplete="off">
@@ -32,11 +32,14 @@
 
 				<div class="input_area">
 					<input class="login_input" name="username" type="text" placeholder="Email">
-					<input class="login_input" name="password" type="password" placeholder="Kata Sandi">
+					<input class="login_input" name="password" type="password" placeholder="Password">
+					<div class="login_menu">
+						<span class="menu_button">Oh, no! Do you missed your password?</span>
+					</div>
 					
 				</div>
 				<div class="button_area">
-					<button type="submit" class="login_button">Masuk</button>
+					<button type="submit" class="login_button">Submit</button>
 					
 				</div>
 			</form>

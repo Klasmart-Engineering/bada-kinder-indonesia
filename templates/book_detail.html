@@ -54,7 +54,7 @@
 		<div class="day_area">
 			
 			{% for entry in week_1 %}
-				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
+				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
 				<!-- {{entry.videos.data}} -->
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
@@ -108,7 +108,7 @@
 		<div class="day_area">
 			
 			{% for entry in week_2 %}
-				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
+				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
@@ -123,7 +123,7 @@
 		</div>
 		<div class="day_area">
 			{% for entry in week_3 %}
-				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
+				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">
@@ -138,7 +138,7 @@
 		</div>
 		<div class="day_area">
 			{% for entry in week_4 %}
-				<div class="{{entry.day.data.attributes.icon_class}}" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
+				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
 				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
 					<div id="custom_modal_body" class="modal-dialog">

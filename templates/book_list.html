@@ -3,8 +3,8 @@
 
 {% block extra_head %}
 	
-	<link rel="stylesheet" href="{% static 'css/level_page/' %}{{ data.0.attributes.level.data.attributes.css_name}}">
-
+	<link rel="stylesheet" href="{% static 'css/level_page/' %}level_{{ data.0.attributes.level.data.attributes.level_letter|upper}}.css">
+	
 	<style>
 	    .book_icon{
 	    	background-image: url("{% static 'image/level_page/' %}book-{{ data.0.attributes.level.data.attributes.level_letter}}.png");
@@ -25,8 +25,7 @@
 
 {% block sidebar %}
 	<div class="side_bar">
-		<!-- {{ data.0.attributes.level.data.attributes.thumbnail.data.attributes.url}} -->
-		<img class="side_logo" src="{{ data.0.attributes.level.data.attributes.thumbnail.data.attributes.url}}" alt="">
+		<img class="side_logo" src="{% static 'image/index/' %}level-{{ data.0.attributes.level.data.attributes.level_letter}}.png">
 	</div>
 {% endblock %}
 
@@ -41,28 +40,28 @@
 		
 		<a href="/book/{{ data.0.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.0.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.0.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.1 %}
 		<a href="/book/{{ data.1.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.1.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.1.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.2 %}
 		<a href="/book/{{ data.2.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.2.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.2.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.3 %}
 		<a href="/book/{{ data.3.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.3.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.3.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
@@ -71,28 +70,28 @@
 		{% if data.4 %}
 		<a href="/book/{{ data.4.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.4.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.4.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.5 %}
 		<a href="/book/{{ data.5.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.5.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.5.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.6 %}
 		<a href="/book/{{ data.6.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.6.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.6.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.7 %}
 		<a href="/book/{{ data.7.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.7.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.7.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
@@ -101,28 +100,28 @@
 		{% if data.8 %}
 		<a href="/book/{{ data.8.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.8.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.8.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.9 %}
 		<a href="/book/{{ data.9.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.9.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.9.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.10 %}
 		<a href="/book/{{ data.10.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.10.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.10.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}
 		{% if data.11 %}
 		<a href="/book/{{ data.11.id}}" class="book_icon">
 			<div class="book_title">
-				<img src="{{ data.11.attributes.thumbnail.data.attributes.url}}" alt="" style="height: 130px;">
+				<img src="{% static 'image/level_page/' %}month-{{ data.11.attributes.book_number}}.png" alt="" style="height: 130px;">
 			</div>
 		</a>
 		{% endif %}

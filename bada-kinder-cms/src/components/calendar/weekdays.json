@@ -16,9 +16,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::week.week"
-    },
-    "week_number": {
-      "type": "string"
     }
   }
 }
