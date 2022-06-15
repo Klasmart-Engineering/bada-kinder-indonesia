@@ -111,9 +111,10 @@ def tutorial_pdf(request):
 
 
 @login_required
-def rpp(request):
+def rpp(request, level_id):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file'
+        f'filters[level][id]={level_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -123,9 +124,10 @@ def rpp(request):
 
 
 @login_required
-def activity_book(request):
+def activity_book(request, level_id):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file&populate=level&'
+        f'filters[level][id]={level_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -135,9 +137,10 @@ def activity_book(request):
 
 
 @login_required
-def story_book(request):
+def story_book(request, level_id):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/story-books?populate=thumbnail&populate=file&populate=level&'
+        f'filters[level][id]={level_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -146,9 +149,10 @@ def story_book(request):
     return render(request, 'activity_book.html', context)
 
 @login_required
-def course_book(request):
+def course_book(request, level_id):
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/course-books?populate=thumbnail&populate=file&populate=level&'
+        f'filters[level][id]={level_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']

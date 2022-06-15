@@ -1,51 +1,41 @@
 {% extends "component/header.html" %}
 {% load static %}
+{% load generals %}
 
 {% block sidebar %}
+{% levels as available_levels %}
+
 <div class="side_bar" style="min-height: 830px;">
 	<div class="menu_list" id="accordion">
-		<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_contents">
-			<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-			<span class="menu_title">Bada Kinder</span>
-			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
-		</div>
-		<div id="menu_contents" class="panel-collapse collapse">
-			<div class="menu_index">
-				<a href="/main">Videos</a>
+		{% for entry in available_levels %}
+			
+			<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_contents_{{entry.id}}">
+				<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
+				<span class="menu_title">Bada Kinder {{entry.attributes.level_letter|upper}}</span>
+				<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
 			</div>
-			<div class="menu_index">
-				<a href="/rpp">Teacher's Guide</a>
+			<div id="menu_contents_{{entry.id}}" class="panel-collapse collapse">
+				<div class="menu_index">
+					<a href="/level/{{entry.id}}">Videos</a>
+				</div>
+				<div class="menu_index">
+					<a href="/rpp/{{entry.id}}">Teacher's Guide</a>
+				</div>
+				<div class="menu_index">
+					<a href="/activity-book/{{entry.id}}?level_letter={{entry.attributes.level_letter|upper}}">Activity Book</a>
+				</div>
+				<div class="menu_index">
+					<a href="/course-book/{{entry.id}}?level_letter={{entry.attributes.level_letter|upper}}">Course Book</a>
+				</div>
+				<div class="menu_index">
+					<a href="/story-book/{{entry.id}}?level_letter={{entry.attributes.level_letter|upper}}">Story Book</a>
+				</div>
 			</div>
-			<div class="menu_index">
-				<a href="/activity-book">Activity Book</a>
-			</div>
-			<div class="menu_index">
-				<a href="/course-book">Course Book</a>
-			</div>
-			<div class="menu_index">
-				<a href="/story-book">Story Book</a>
-			</div>
-		</div>
+			<div class="menu_line"></div>
+		{% endfor %}
 		
-		<!-- <div class="menu_line"></div>
-		<div id="test11" class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_board">
-			<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-			<span class="menu_title">Bada Kinder B</span>
-			<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
-		</div>
-		<div id="menu_board" class="panel-collapse collapse">
-			<div class="menu_index">
-				<a href="/board/notice">Video</a>
-			</div>
-			<div id="plan" class="menu_index" data-toggle="collapse" data-parent="#accordion" href="#menu_plan">
-				<a href="/board/studyplan">RPP</a>
-			</div>
-			<div id="archive" class="menu_index"  data-toggle="collapse" data-parent="#accordion" href="#menu_archive">
-				<a href="/board/archive">Actvity Book</a>
-			</div>
-		</div> -->
 
-		<div class="menu_line"></div>
+		
 		<div id="test11" class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_board1">
 			<img class="menu_icon" src="{% static 'image/index/icon-board.png' %}" alt="">
 			<span class="menu_title">Tutorial</span>
@@ -58,9 +48,6 @@
 			<div class="menu_index">
 				<a href="/tutorial-pdf">Files</a>
 			</div>
-			<!-- <div id="archive" class="menu_index"  data-toggle="collapse" data-parent="#accordion" href="#menu_archive">
-				<a href="/board/archive">자료실</a>
-			</div> -->
 		</div>
 		<div class="menu_line"></div>
 		<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_homework">

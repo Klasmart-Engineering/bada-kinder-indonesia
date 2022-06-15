@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "activity_books",
+  "collectionName": "story_books",
   "info": {
-    "singularName": "activity-book",
-    "pluralName": "activity-books",
-    "displayName": "Activity Book",
+    "singularName": "story-book",
+    "pluralName": "story-books",
+    "displayName": "Story Book",
     "description": ""
   },
   "options": {
