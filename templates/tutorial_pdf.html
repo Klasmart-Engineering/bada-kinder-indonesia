@@ -16,12 +16,12 @@
 				 
 				 
 					<div class="contents_area">
-						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal45" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
+						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal_{{ entry.id}}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
 						<div class="video_title">
 							{{ entry.attributes.title }}
 						</div>
 					</div>
-					<div id="vimeo_modal45" class="modal fade" role="dialog">
+					<div id="vimeo_modal_{{ entry.id}}" class="modal fade" role="dialog">
 						<div class="modal-dialog" style="width: 1200px;">
 							<iframe height="800px" width="100%" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0"></iframe>
 						</div>
