@@ -1,17 +1,12 @@
-import requests
-
 from django.conf import settings
 from django import template
 
+from bada_kinder_website.views import get_pacakage_id
 
 register = template.Library()
 
 
 @register.simple_tag
-def levels():
-    r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/levels?sort[0]=ordering',
-        headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
-    )
-    data = r.json()['data']
-    return data
+def user_package_id(request):
+    pacakage_id = get_pacakage_id(request)
+    return pacakage_id

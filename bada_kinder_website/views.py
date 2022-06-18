@@ -4,16 +4,32 @@ from django.conf import settings
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
+from utils.models import Subscription
+
+def get_pacakage_id(request):
+    try:
+        pacakage_id = Subscription.objects.get(user=request.user).package_id
+        if not pacakage_id:
+            pacakage_id = 0
+    except ObjectDoesNotExist:
+        pacakage_id = 0
+
+    return pacakage_id
 
 @login_required
 def main(request):
+    pacakage_id = get_pacakage_id(request)
+    if not pacakage_id:
+        return redirect('/tutorial-video')
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/levels?'
         f'populate=thumbnail&populate=vertical_cover&'
-        f'populate=age_badge&sort[0]=ordering',
+        f'populate=age_badge&sort[0]=ordering&',
+        f'filters[package][id]={pacakage_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -24,11 +40,7 @@ def main(request):
 
 @login_required
 def book_list(request, level_id):
-    
-    # url_params = {
-    #     "populate": "level.thumbnail",
-    #     "filters[level][id]": level_id
-    # }
+
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/books?'
         f'populate=level.thumbnail&populate=thumbnail&'
@@ -111,10 +123,11 @@ def tutorial_pdf(request):
 
 
 @login_required
-def rpp(request, level_id):
+def rpp(request):
+    pacakage_id = get_pacakage_id(request)
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file'
-        f'filters[level][id]={level_id}',
+        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file&',
+        f'filters[package][id]={pacakage_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -124,10 +137,11 @@ def rpp(request, level_id):
 
 
 @login_required
-def activity_book(request, level_id):
+def activity_book(request):
+    pacakage_id = get_pacakage_id(request)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[level][id]={level_id}',
+        f'filters[package][id]={pacakage_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -137,10 +151,11 @@ def activity_book(request, level_id):
 
 
 @login_required
-def story_book(request, level_id):
+def story_book(request):
+    pacakage_id = get_pacakage_id(request)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/story-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[level][id]={level_id}',
+        f'filters[package][id]={pacakage_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
@@ -149,10 +164,11 @@ def story_book(request, level_id):
     return render(request, 'activity_book.html', context)
 
 @login_required
-def course_book(request, level_id):
+def course_book(request):
+    pacakage_id = get_pacakage_id(request)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/course-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[level][id]={level_id}',
+        f'filters[package][id]={pacakage_id}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']

@@ -1,3 +1,13 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
+class Subscription(models.Model):
+    package_id = models.IntegerField(default=1, null=True, blank=True)
+    user = models.OneToOneField(
+        User, 
+        null=True, 
+        blank=True, 
+        related_name='subscription', 
+        on_delete=models.SET_NULL
+    )

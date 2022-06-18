@@ -37,10 +37,10 @@
         "audios"
       ]
     },
-    "level": {
+    "package": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::level.level"
+      "target": "api::package.package"
     }
   }
 }
