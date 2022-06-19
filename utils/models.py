@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Subscription(models.Model):
-    package_id = models.IntegerField(default=1, null=True, blank=True)
+    package_id = models.IntegerField(default=0, null=True, blank=True)
     user = models.OneToOneField(
         User, 
         null=True, 

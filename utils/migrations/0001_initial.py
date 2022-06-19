@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Subscription',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('package_id', models.IntegerField(blank=True, default=1, null=True)),
+                ('package_id', models.IntegerField(blank=True, default=0, null=True)),
                 ('user', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='subscription', to=settings.AUTH_USER_MODEL)),
             ],
         ),
