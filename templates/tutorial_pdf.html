@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head %}
-	<link rel="stylesheet" href="{% static 'css/contents/nemies.css' %}">
+	<link rel="stylesheet" href="{% static 'css/contents/nemies_v2.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -26,6 +26,9 @@
 							<iframe height="800px" width="100%" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0"></iframe>
 						</div>
 					</div>
+				{% empty %}
+	
+					<h3>There is no available file.</h3>
 				{% endfor %}
 					<!-- <script>
 						$('#vimeo_modal45').on('show.bs.modal', function (e) {

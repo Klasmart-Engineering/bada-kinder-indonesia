@@ -1,0 +1,37 @@
+.contents_wrap .content .level_box_area{margin-left: 90px;}
+.contents_wrap .content .age_badge_area{}
+.contents_wrap .content .age_badge_area .age_badge{margin-left: 24px;}
+.contents_wrap .content .level_class_area{text-align: center; margin: 6px 0 13px 0;}
+.contents_wrap .content .level_class_area .level_class{}
+.contents_wrap .content .char_img_area{display: flex; justify-content: center; height: 279px;}
+.contents_wrap .content .char_img_area .char_img{}
+.contents_wrap .side_bar{width: 18%; background-color: #1596ea; float: left; min-height: 830px;}
+.contents_wrap .side_bar .menu_line{border: 1px solid #fff;}
+.contents_wrap .side_bar .menu_list .menu{padding: 28px 0 0 55px; height: 83px; cursor: pointer;}
+.contents_wrap .side_bar .menu_list .menu_icon{vertical-align: text-bottom;}
+.contents_wrap .side_bar .menu_list .menu .menu_title{font-family: 'Nanum Gothic', sans-serif; font-size: 20px; font-weight: 800; color: #fff; margin-left: 12px; letter-spacing: -1px;}
+.contents_wrap .side_bar .menu_list .menu .icon_arrow{font-size: 25px; float: right; margin: 2px 30px 0 0; color: #fff;}
+.menu_index{text-align: left; background-color: #fff; padding: 8px 60px; font-family: 'Source Sans Pro', sans-serif; font-size: 16px; cursor: pointer; text-decoration: none;}
+.menu_index a{color: #666;}
+.icon_arrow.on{transform: rotate(180deg);}
+.week_icon_1{background-image: url('/django_static/image/book/B_week-1.png'); width: 116px; height: 133px; float: left; margin-top: 11px; background-repeat: no-repeat; background-size: cover;}
+.week_icon_2{background-image: url('/django_static/image/book/B_week-2.png'); width: 116px; height: 133px; float: left; margin-top: 11px; background-repeat: no-repeat; background-size: cover;}
+.week_icon_3{background-image: url('/django_static/image/book/B_week-3.png'); width: 116px; height: 133px; float: left; margin-top: 11px; background-repeat: no-repeat; background-size: cover;}
+.week_icon_4{background-image: url('/django_static/image/book/B_week-4.png'); width: 116px; height: 133px; float: left; margin-top: 11px; background-repeat: no-repeat; background-size: cover;}
+.mon_icon{background-image: url('/django_static/image/book/B_mon.png'); width: 143px; height: 144px; margin: 0 0 0 21px; float: left; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+/* .mon_icon:hover{background-image: url('/django_static/image/book/mon-on.png'); width: 143px; height: 144px; margin: 0 0 0 21px; float: left; cursor: pointer;} */
+.tue_icon{background-image: url('/django_static/image/book/B_tue.png'); width: 143px; height: 144px; margin: 0 0 0 5px;float: left; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+.wed_icon{background-image: url('/django_static/image/book/B_wed.png'); width: 143px; height: 144px; margin: 0 0 0 5px; float: left; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+.thu_icon{background-image: url('/django_static/image/book/B_thu.png'); width: 143px; height: 144px; margin: 0 0 0 5px; float: left; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+.fri_icon{background-image: url('/django_static/image/book/B_fri.png'); width: 143px; height: 144px; margin: 0 0 0 5px; float: left; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+.content{background-color: #eaf2e0; height: 830px; 
+	background-image: url('/django_static/image/book/level_B.png'); background-repeat: no-repeat; background-position: -39px -29px; background-size: cover;}
+.level_name{width: 370px; display: flex; align-items: center; margin: 0 auto;}
+.level_name .img_detail{width: 235px; height: 77px;}
+.level_name .font_detail{font-family: 'Chalkduster', sans-serif; font-size: 100px;  color: #9ab738;}
+.title_area{text-align: center; padding: 19px 508px 0 0; height: 144px;}
+.level_image{margin-right: 30px; width: 121px; height: 37px;}
+#video_modal{background-color: rgba(0, 0, 0, 0.6);}
+#custom_modal_body{margin-top: -25px; width: max-content;}
+.contents_wrap .sub_side_bar .plan_acc{display: none;}
+.contents_wrap .sub_side_bar .archive_acc{display: none;}

@@ -36,6 +36,11 @@
         "videos",
         "audios"
       ]
+    },
+    "package": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::package.package"
     }
   }
 }

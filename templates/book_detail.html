@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head %}
-	<link rel="stylesheet" href="{% static 'css/book/book' %}{{data.attributes.level.data.attributes.level_letter|upper}}.css">
+	<link rel="stylesheet" href="{% static 'css/book_v2/book' %}{{data.attributes.level.data.attributes.level_letter|upper}}.css">
 	<link href="https://www.dafontfree.net/embed/Y2hhbGtkdXN0ZXItcmVndWxhciZkYXRhLzE4NC9jLzE4MDQzMC9DaGFsa2R1c3Rlci50dGY" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
@@ -268,7 +268,7 @@
 	{% for entry in week_1 %}
 		{% if entry.videos.data|length > 1 %}
 			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{video.attributes.url}}"
 					type="video/mp4"
@@ -277,7 +277,7 @@
 			</video>
 			{% endfor %}
 		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
 					type="video/mp4"
@@ -297,7 +297,7 @@
 	{% for entry in week_2 %}
 		{% if entry.videos.data|length > 1 %}
 			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{video.attributes.url}}"
 					type="video/mp4"
@@ -306,7 +306,7 @@
 			</video>
 			{% endfor %}
 		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
 					type="video/mp4"
@@ -325,7 +325,7 @@
 	{% for entry in week_3 %}
 		{% if entry.videos.data|length > 1 %}
 			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{video.attributes.url}}"
 					type="video/mp4"
@@ -334,7 +334,7 @@
 			</video>
 			{% endfor %}
 		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
 					type="video/mp4"
@@ -354,7 +354,7 @@
 	{% for entry in week_4 %}
 		{% if entry.videos.data|length > 1 %}
 			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{video.attributes.url}}"
 					type="video/mp4"
@@ -363,7 +363,7 @@
 			</video>
 			{% endfor %}
 		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1300" height="800" oncontextmenu="return false;"  controls controlsList="nodownload">
+			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
 				<source 
 					src="{{entry.videos.data.0.attributes.url}}"
 					type="video/mp4"

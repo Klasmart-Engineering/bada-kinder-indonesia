@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head %}
-	<link rel="stylesheet" href="{% static 'css/contents/nemies.css' %}">
+	<link rel="stylesheet" href="{% static 'css/contents/nemies_v2.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -26,8 +26,8 @@
 						</div>
 					</div>
 					<div style="display: none;">
-						<!-- <iframe id="vimeo{{ entry.id }}" width="1300" height="800" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
-						<video id="vimeo_{{entry.id}}" width="1300" height="800" controls>
+						<!-- <iframe id="vimeo{{ entry.id }}" width="1024" height="720" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
+						<video id="vimeo_{{entry.id}}" width="1024" height="720" controls>
 							<source 
 								src="{{ entry.attributes.file.data.attributes.url }}"
 								type="video/mp4"
@@ -54,6 +54,9 @@
 							$(this).find($('.vimeo_wrap')).empty()
 						})
 					</script>
+			{% empty %}
+	
+				<h3>There is no available video.</h3>
 			{% endfor %}
 				
 			

@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block content %}
+<style>
+	.side_bar {
+		min-height: 550px !important;
+	}
+	.contents_wrap{
+		height: 710px !important;
+	}
+</style>
 <div class="content">
             
 	<div class="level_box_area">
@@ -15,7 +23,7 @@
 				
 			</div>
 			<div class="level_class_area">
-				<img class="level_class" src="{% static 'image/index/' %}level-{{entry.attributes.level_letter}}.png" alt="">
+				<img width="159px" class="level_class" src="{% static 'image/index/' %}level-{{entry.attributes.level_letter}}.png" alt="">
 				
 			</div>
 		</a>
