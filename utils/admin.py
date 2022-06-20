@@ -10,10 +10,16 @@ class SubscriptionInline(admin.TabularInline):
 class CustomUserAdmin(UserAdmin):
     def __init__(self, *args, **kwargs):
         super(UserAdmin,self).__init__(*args, **kwargs)
-        UserAdmin.list_display = ['username', 'email', 'date_joined']
+        UserAdmin.list_display = ['username', 'date_joined']
+
+    def get_form(self, request, obj, **kwargs):
+        form = super(CustomUserAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['username'].label = 'Email'
+        form.base_fields['username'].help_text = ''
+        return form
 
     fieldsets = (
-        (None, {"fields": ("email", "username", "password")}),
+        (None, {"fields": ("username", "password")}),
         (("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
     add_fieldsets = (
