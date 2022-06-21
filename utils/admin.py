@@ -7,6 +7,11 @@ from . import models
 class SubscriptionInline(admin.TabularInline):
     model = models.Subscription
 
+
+class UserProfileInline(admin.TabularInline):
+    model = models.UserProfile
+
+
 class CustomUserAdmin(UserAdmin):
     def __init__(self, *args, **kwargs):
         super(UserAdmin,self).__init__(*args, **kwargs)
@@ -33,6 +38,7 @@ class CustomUserAdmin(UserAdmin):
     )
     
     inlines = [
+        UserProfileInline,
         SubscriptionInline,
     ]
 

@@ -9,15 +9,20 @@
 {% block page_content %}
 	<div class="contents_wrap" style="height: 910px;">
 		
-		<div class="header">
+		<div class="header" 
+			{% if request.user.profile.banner %}
+				style="background-image: url('{{request.user.profile.banner.url}}')"
+			{% endif %}
+		>
 			<a class="logo_area" href="/main">
 				<img class="header_image" src="{% static 'image/index/badanamu-logo.png' %}" alt="">
 				<p class="header_title">Bada Kinder</p>
 			</a>
-			<div class="header_right">
+			<div class="header_right" style="width: 22%">
 				<div class="user_login">
 					<img class="user_image" src="{% static 'image/index/icon-thumb.png' %}" alt="" style="margin: 0 0 0 0;">
-					<span class="text_strong">Welcome to </span><br> Bada Kinder!
+					<!-- <span class="text_strong">Welcome to </span> -->
+					<br> {{request.user.profile.display_name}}
 					<br><span><a href="/accounts/logout/">Logout</a></span>
 				</div>
 			</div>
