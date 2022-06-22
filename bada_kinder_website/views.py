@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
@@ -102,6 +103,7 @@ class Main(LoginRequiredMixin, TemplateView):
 @login_required
 def tutorial_video(request):
     page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/video-tutorials?populate=thumbnail&populate=file'
         f'&pagination[pageSize]=8&pagination[page]={page}',
@@ -111,12 +113,26 @@ def tutorial_video(request):
     meta = r.json()['meta']
     page_count = meta['pagination']['pageCount']
     page_range = range(1, page_count + 1)
-    context = {'data': data, 'meta': meta, 'page_range': page_range, "page": int(page)}
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_obj': page_obj,
+        'page_range': page_range, 
+        'page': page,
+    }
     return render(request, 'tutorial_video.html', context)
 
 @login_required
 def tutorial_pdf(request):
     page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/pdf-tutorials?populate=thumbnail&populate=file'
         f'&pagination[pageSize]=8&pagination[page]={page}',
@@ -126,16 +142,19 @@ def tutorial_pdf(request):
     meta = r.json()['meta']
     page_count = meta['pagination']['pageCount']
     page_range = range(1, page_count + 1)
-    page = int(page)
-    next = page + 1
-    last = page_count
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
     context = {
         'data': data, 
         'meta': meta, 
+        'page_obj': page_obj,
         'page_range': page_range, 
-        "page": page,
-        "next": next,
-        "last": last
+        'page': page,
     }
     return render(request, 'tutorial_pdf.html', context)
 
@@ -144,8 +163,9 @@ def tutorial_pdf(request):
 def rpp(request):
     pacakage_id = get_pacakage_id(request)
     page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file&',
+        f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file&'
         f'filters[package][id]={pacakage_id}'
         f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
@@ -154,18 +174,19 @@ def rpp(request):
     meta = r.json()['meta']
     page_count = meta['pagination']['pageCount']
     page_range = range(1, page_count + 1)
-    page = int(page)
-    next = page + 1
-    last = page_count
-    if next == last + 1:
-        next = 0
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
     context = {
         'data': data, 
         'meta': meta, 
+        'page_obj': page_obj,
         'page_range': page_range, 
-        "page": page,
-        "next": next,
-        "last": last
+        'page': page,
     }
     return render(request, 'rpp.html', context)
 
@@ -173,41 +194,98 @@ def rpp(request):
 @login_required
 def activity_book(request):
     pacakage_id = get_pacakage_id(request)
+    page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/activity-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[package][id]={pacakage_id}',
+        f'filters[package][id]={pacakage_id}'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data, 'kind': 'activity'}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_obj': page_obj,
+        'page_range': page_range, 
+        'page': page,
+        'kind': 'activity'
+    }
     return render(request, 'activity_book.html', context)
 
 
 @login_required
 def story_book(request):
     pacakage_id = get_pacakage_id(request)
+    page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/story-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[package][id]={pacakage_id}',
+        f'filters[package][id]={pacakage_id}'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data, 'kind': 'story'}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_obj': page_obj,
+        'page_range': page_range, 
+        'page': page,
+        'kind': 'story'
+    }
     return render(request, 'activity_book.html', context)
 
 @login_required
 def course_book(request):
     pacakage_id = get_pacakage_id(request)
+    page = request.GET.get('page', 1)
+    page = int(page)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/course-books?populate=thumbnail&populate=file&populate=level&'
-        f'filters[package][id]={pacakage_id}',
+        f'filters[package][id]={pacakage_id}'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data, 'kind': 'course'}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    
+    item_range = range(1, meta['pagination']['total'] + 1)
+    item_list = list(item_range)
+
+    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    page_obj = paginator.get_page(page)
+
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_obj': page_obj,
+        'page_range': page_range, 
+        'page': page,
+        'kind': 'course'
+    }
     return render(request, 'activity_book.html', context)
 
 

@@ -64,24 +64,35 @@
 				
 			
 		</div>
-		<!-- <div class="page_nav">
-			
-			
-				<a name="page_btn" id="page1" class="on" href="?page=1">1</a>
-			
-				 <a name="page_btn" id="page2"  href="?page=2">2</a> 
-			
-
-			
-				<a class="dir" href="?page=2" style="margin-left:4px">
-					<img src="{% static 'image/index/btn_page_next.gif' %}" alt="다음" />
-
+		{% if page_obj.paginator.num_pages > 1 %}
+			<div class="page_nav">
+				{% if page_obj.has_previous %}
+						<a class="dir" href="?page=1">
+							<img src="{% static 'image/index/btn_page_first.gif' %}" alt="first" />
+						</a>
+						<a class="dir" href="?page={{ page_obj.previous_page_number }}" style="margin-left:4px">
+							<img src="{% static 'image/index/btn_page_previous.gif' %}" alt="previous" />
+				{% endif %}
+				{% for page_number in page_range %}
+					<a 
+						name="page_btn" 
+						id="page{{page_number}}" 
+						{% if page == page_number %} class="on" {% endif %}
+						href="?page={{page_number}}">
+					{{page_number}}
 				</a>
-				<a class="dir" href="?page=2">
-					<img src="{% static 'image/index/btn_page_last.gif' %}" alt="끝으로" />
-				</a>
-			
-		</div> -->
+				{% endfor %}
+					
+				{% if page_obj.has_next %}
+					<a class="dir" href="?page={{ page_obj.paginator.num_pages }}" style="margin-left:4px">
+						<img src="{% static 'image/index/btn_page_next.gif' %}" alt="next" />
+					</a>
+					<a class="dir" href="?page={{ page_obj.paginator.num_pages }}">
+						<img src="{% static 'image/index/btn_page_last.gif' %}" alt="last" />
+					</a>
+				{% endif %}
+			</div>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}
