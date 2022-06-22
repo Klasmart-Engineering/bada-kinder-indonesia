@@ -10,7 +10,7 @@
 	<div class="page-header" style="padding-left: 50px">
 		<h1>Tutorial File</h1>
 	</div>
-<div class="video_area">
+<div  class="video_area" style="min-height: 800px;">
 	<div class="contents_area">
 		<!-- 이미지파일 영문으로 변경 후 진행 -->
 		<div class="contaior">
@@ -19,8 +19,8 @@
 				 
 					<div class="contents_area">
 						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal_{{ entry.id}}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
-						<div class="video_title">
-							{{ entry.attributes.title }}
+						<div class="video_title" style="height:70px;">
+							{{ entry.attributes.title|truncatechars:55 }}
 						</div>
 					</div>
 					<div id="vimeo_modal_{{ entry.id}}" class="modal fade" role="dialog">

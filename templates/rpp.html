@@ -8,18 +8,17 @@
 {% block content %}
 <div class="content">
 	<div class="page-header" style="padding-left: 50px">
-		<h1>Teacher's Guide <br><small>Bada Kinder {{request.GET.level_letter}}</small></h1>
+		<h1>Teacher's Guide </h1>
 	</div>
-<div class="video_area">
+<div  class="video_area" style="min-height: 800px;">
 	<div class="contents_area">
-		<!-- 이미지파일 영문으로 변경 후 진행 -->
 		<div class="contaior">
 			{% for entry in data %}
 			
 					<div class="contents_area">
 						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal_{{ entry.id }}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
-						<div class="video_title">
-							{{ entry.attributes.title }}
+						<div class="video_title" style="height:70px;">
+							{{ entry.attributes.title|truncatechars:55}}
 						</div>
 					</div>
 					<div id="vimeo_modal_{{ entry.id }}" class="modal fade" role="dialog">
@@ -44,24 +43,32 @@
 				
 			
 		</div>
-		<!-- <div class="page_nav">
+		<div class="page_nav">
 			
+			{% for page_number in page_range %}
+				<a 
+					name="page_btn" 
+					id="page{{page_number}}" 
+					{% if page == page_number %} class="on" {% endif %}
+					href="?page={{page_number}}">
+				{{page_number}}
+			</a>
+			{% endfor %}
+				<!-- <a name="page_btn" id="page1" class="on" href="?page=1">1</a>
 			
-				<a name="page_btn" id="page1" class="on" href="?page=1">1</a>
-			
-				<a name="page_btn" id="page2"  href="?page=2">2</a>
+				<a name="page_btn" id="page2"  href="?page=2">2</a> -->
 			
 
-			
-				<a class="dir" href="?page=2" style="margin-left:4px">
-					<img src="{% static 'image/index/btn_page_next.gif' %}" alt="다음" />
-
+				{% if next %}
+				<a class="dir" href="?page={{next}}" style="margin-left:4px">
+					<img src="{% static 'image/index/btn_page_next.gif' %}" alt="next" />
+				{% endif %}
 				</a>
-				<a class="dir" href="?page=2">
-					<img src="{% static 'image/index/btn_page_last.gif' %}" alt="끝으로" />
+				<a class="dir" href="?page={{last}}">
+					<img src="{% static 'image/index/btn_page_last.gif' %}" alt="last" />
 				</a>
 			
-		</div> -->
+		</div>
 	</div>
 </div>
 {% endblock %}

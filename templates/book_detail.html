@@ -5,8 +5,9 @@
 	<link rel="stylesheet" href="{% static 'css/book_v2/book' %}{{data.attributes.level.data.attributes.level_letter|upper}}.css">
 	<link href="https://www.dafontfree.net/embed/Y2hhbGtkdXN0ZXItcmVndWxhciZkYXRhLzE4NC9jLzE4MDQzMC9DaGFsa2R1c3Rlci50dGY" rel="stylesheet" type="text/css"/>
 {% endblock %}
-
+{% block height_sidebar %} style="min-height: 830px;" {% endblock %}
 {% block content %}
+
 {% with data.attributes.level.data.attributes.level_letter as level_letter %}
 <div class="content">
             
@@ -495,4 +496,12 @@
 	
 </script>
 
+{% endblock %}
+
+
+
+{% block copyright %}
+<div style="float: left; margin-left: 20px; margin-top:70px;">
+	Copyright © 2022 by KidsLoop Co.,Ltd. All Rights Reserved.
+</div>
 {% endblock %}

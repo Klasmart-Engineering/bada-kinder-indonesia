@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_content %}
-	<div class="contents_wrap" style="height: 910px;">
+	<div class="contents_wrap" {% block contents_wrap_height %}style="height: 910px;" {% endblock %}>
 		
 		<div class="header" 
 			{% if request.user.profile.banner %}
@@ -35,7 +35,10 @@
 		{% block content %}
 		{% endblock %}
 
-			<div style="float: left; margin-left: 20px;">Copyright © 2021 by KidsLoop Co.,Ltd. All Rights Reserved.</div>
+		{% block copyright %}
+			<div style="float: left; margin-left: 20px;">
+				Copyright © 2022 by KidsLoop Co.,Ltd. All Rights Reserved.</div>
+		{% endblock %}
 		</div>
 	</div>
 {% endblock %}

@@ -6,13 +6,13 @@
 {% user_package_id request as package_id %}
 
 
-<div class="side_bar" style="min-height: 1010px;">
+<div class="side_bar" {% block height_sidebar %} style="min-height: 940px;"{% endblock %}>
 	<div class="menu_list" id="accordion">
 		
 		{% if package_id %}
 			<div class="menu" data-toggle="collapse" data-parent="#accordion" href="#menu_contents_">
 				<img class="menu_icon" src="{% static 'image/index/icon-contents.png' %}" alt="">
-				<span class="menu_title">Bada Kinder {{entry.attributes.level_letter|upper}}</span>
+				<span class="menu_title">Bada Kinder</span>
 				<span class="icon_arrow"><i class="fas fa-chevron-down"></i></span>
 			</div>
 			

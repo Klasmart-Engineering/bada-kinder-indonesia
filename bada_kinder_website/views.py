@@ -101,38 +101,72 @@ class Main(LoginRequiredMixin, TemplateView):
 
 @login_required
 def tutorial_video(request):
+    page = request.GET.get('page', 1)
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/video-tutorials?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/video-tutorials?populate=thumbnail&populate=file'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    context = {'data': data, 'meta': meta, 'page_range': page_range, "page": int(page)}
     return render(request, 'tutorial_video.html', context)
 
 @login_required
 def tutorial_pdf(request):
+    page = request.GET.get('page', 1)
     r = requests.get(
-        f'{settings.CMS_BASE_URL}/api/pdf-tutorials?populate=thumbnail&populate=file',
+        f'{settings.CMS_BASE_URL}/api/pdf-tutorials?populate=thumbnail&populate=file'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    page = int(page)
+    next = page + 1
+    last = page_count
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_range': page_range, 
+        "page": page,
+        "next": next,
+        "last": last
+    }
     return render(request, 'tutorial_pdf.html', context)
 
 
 @login_required
 def rpp(request):
     pacakage_id = get_pacakage_id(request)
+    page = request.GET.get('page', 1)
     r = requests.get(
         f'{settings.CMS_BASE_URL}/api/rpps?populate=thumbnail&populate=file&',
-        f'filters[package][id]={pacakage_id}',
+        f'filters[package][id]={pacakage_id}'
+        f'&pagination[pageSize]=8&pagination[page]={page}',
         headers={'Authorization': f'bearer {settings.STRAPI_API_KEY}'}
     )
     data = r.json()['data']
-    print(data)
-    context = {'data': data}
+    meta = r.json()['meta']
+    page_count = meta['pagination']['pageCount']
+    page_range = range(1, page_count + 1)
+    page = int(page)
+    next = page + 1
+    last = page_count
+    if next == last + 1:
+        next = 0
+    context = {
+        'data': data, 
+        'meta': meta, 
+        'page_range': page_range, 
+        "page": page,
+        "next": next,
+        "last": last
+    }
     return render(request, 'rpp.html', context)
 
 

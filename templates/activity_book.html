@@ -9,10 +9,10 @@
 <div class="content">
 	
 	<div class="page-header" style="padding-left: 50px">
-		<h1>{{kind|title}} Book <br><small>Bada Kinder {{request.GET.level_letter}}</small></h1>
+		<h1>{{kind|title}} Book </h1>
 	</div>
 	
-<div class="video_area">
+<div  class="video_area" style="min-height: 800px;">
 	
 	
 	<div class="contents_area">
@@ -26,8 +26,8 @@
 			{% for entry in data %}
 					<div class="contents_area">
 						<img class="img_contents" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}" src="{{ entry.attributes.thumbnail.data.attributes.url }}" alt="">
-						<div class="video_title">
-							{{ entry.attributes.title }}
+						<div class="video_title" style="height:70px;">
+							{{ entry.attributes.title|truncatechars:55 }}
 						</div>
 					</div>
 					<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
