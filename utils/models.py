@@ -23,6 +23,7 @@ class UserProfile(models.Model):
     )
     display_name = models.CharField(max_length=128, null=True, blank=True)
     banner = models.FileField( null=True, blank=True, upload_to='media')
+    profile_picture = models.FileField(null=True, blank=True, upload_to='media/profile_picture')
 
 
 class SingletonModel(models.Model):
