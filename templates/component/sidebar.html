@@ -4,6 +4,7 @@
 
 {% block sidebar %}
 {% user_package_id request as package_id %}
+{% settings as cms_settings %}
 
 
 <div class="side_bar" {% block height_sidebar %} style="min-height: 940px;"{% endblock %}>
@@ -23,15 +24,21 @@
 				<div class="menu_index">
 					<a href="/rpp">Teacher's Guide</a>
 				</div>
+				{% if not cms_settings.hide_activity_book %}
 				<div class="menu_index">
 					<a href="/activity-book">Activity Book</a>
 				</div>
+				{% endif %}
+				{% if not cms_settings.hide_course_book %}
 				<div class="menu_index">
 					<a href="/course-book">Course Book</a>
 				</div>
+				{% endif %}
+				{% if not cms_settings.hide_story_book %}
 				<div class="menu_index">
 					<a href="/story-book">Story Book</a>
 				</div>
+				{% endif %}
 			</div>
 			<div class="menu_line"></div>
 		{% endif %}
