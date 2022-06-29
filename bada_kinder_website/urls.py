@@ -33,6 +33,12 @@ urlpatterns = [
     path("course-book", views.course_book, name="course_book"),
     path("tutorial-pdf/1/", views.tutorial_pdf_detail, name="tutorial_pdf_detail"),
     path("tutorial-video", views.tutorial_video, name="tutorial_video"),
+    path("reset-password", views.ResetPasswordView.as_view(), name="reset_password"),
+    path("reset-password-done", views.ResetPasswordDoneView.as_view(), name="reset_password_done"),
+    # path("set-password", views.SetPasswordView.as_view(), name="set_password"),
+    path("set-password-complete", views.SetPasswordCompleteView.as_view(), name="set_password_complete"),
+    path("set-password/<str:uidb64>/<str:token>", views.SetPasswordView.as_view(), name="set_password"),
+    
     # path("book/1/A", Book_1A.as_view(), name="book_1A"),
     path("checkhomework", views.Checkhomework.as_view(), name="checkhomework"),
     path("board/notice", views.Board_Notice.as_view(), name="board_notice"),

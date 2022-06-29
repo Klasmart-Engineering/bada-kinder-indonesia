@@ -1,7 +1,13 @@
 import requests
 
 from django.conf import settings
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import (
+    LoginView, 
+    PasswordResetView, 
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView
+)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -301,6 +307,28 @@ def tutorial_pdf_detail(request):
     context = {'data': data}
     return render(request, 'tutorial_pdf_detail.html', context)
 
+
+# PasswordResetView, 
+# PasswordResetDoneView,
+# PasswordResetConfirmView,
+# PasswordResetCompleteView
+class ResetPasswordView(PasswordResetView):
+    template_name = "reset-password.html"
+    success_url = "/reset-password-done"
+    email_template_name = "reset-password-email.html"
+
+class ResetPasswordDoneView(PasswordResetDoneView):
+    template_name = "reset-password-done.html"
+
+# class SetPasswordView(TemplateView):
+#     template_name = "set-password.html"
+
+class SetPasswordCompleteView(PasswordResetCompleteView):
+    template_name = "set-password-complete.html"
+
+class SetPasswordView(PasswordResetConfirmView):
+    template_name = "set-password.html"
+    success_url = "/set-password-complete"
 
 class LevelA(TemplateView):
     template_name = "level/A/index.html"

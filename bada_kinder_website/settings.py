@@ -167,3 +167,5 @@ LOGIN_URL = "/"
 CMS_BASE_URL = env('CMS_BASE_URL')
 DEFAULT_ADMIN_PASSWORD = env('DEFAULT_ADMIN_PASSWORD')
 STRAPI_API_KEY = env('STRAPI_API_KEY')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
