@@ -169,3 +169,47 @@ DEFAULT_ADMIN_PASSWORD = env('DEFAULT_ADMIN_PASSWORD')
 STRAPI_API_KEY = env('STRAPI_API_KEY')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
+DEFAULT_FROM_EMAIL = env(
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="Kidsloop Indonesia<noreply@school.kidsloop.co.id>",
+)
+
+# Anymail
+# ------------------------------------------------------------------------------
+# https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
+INSTALLED_APPS += ["anymail"]  # noqa F405
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
+# https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
+# https://anymail.readthedocs.io/en/stable/esps/amazon_ses/
+EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
+ANYMAIL = {
+    "AMAZON_SES_CLIENT_PARAMS": {
+        # example: override normal Boto credentials specifically for Anymail
+        "aws_access_key_id": os.getenv("AWS_ACCESS_KEY_FOR_ANYMAIL_SES"),
+        "aws_secret_access_key": os.getenv("AWS_SECRET_KEY_FOR_ANYMAIL_SES"),
+        "region_name": os.getenv("AWS_REGION_FOR_ANYMAIL_SES", "ap-southeast-1"),
+        # override other default options
+        "config": {
+            "connect_timeout": 30,
+            "read_timeout": 30,
+        }
+    },
+}
+
+DOMAIN_NAME = env(
+    "DJANGO_DOMAIN_NAME",
+    default="school.kidsloop.co.id",
+)
+
+TEAM_NAME = env(
+    "DJANGO_TEAM_NAME",
+    default="Kidsloop Indonesia",
+)
+
+SITE_NAME = env(
+    "DJANGO_SITE_NAME",
+    default="Bada Kinder",
+)

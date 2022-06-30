@@ -316,6 +316,12 @@ class ResetPasswordView(PasswordResetView):
     template_name = "reset-password.html"
     success_url = "/reset-password-done"
     email_template_name = "reset-password-email.html"
+    extra_email_context = {
+        "domain": settings.DOMAIN_NAME,
+        "team_name": settings.TEAM_NAME,
+        "site_name": settings.SITE_NAME
+    }
+    subject_template_name = "password_reset_subject.txt"
 
 class ResetPasswordDoneView(PasswordResetDoneView):
     template_name = "reset-password-done.html"
