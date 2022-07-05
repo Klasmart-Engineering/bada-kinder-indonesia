@@ -213,3 +213,8 @@ SITE_NAME = env(
     "DJANGO_SITE_NAME",
     default="Bada Kinder",
 )
+
+HTTP_PROTOCOL = env(
+    "DJANGO_HTTP_PROTOCOL",
+    default="http",
+)

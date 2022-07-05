@@ -319,7 +319,8 @@ class ResetPasswordView(PasswordResetView):
     extra_email_context = {
         "domain": settings.DOMAIN_NAME,
         "team_name": settings.TEAM_NAME,
-        "site_name": settings.SITE_NAME
+        "site_name": settings.SITE_NAME,
+        "protocol": settings.HTTP_PROTOCOL
     }
     subject_template_name = "password_reset_subject.txt"
 
