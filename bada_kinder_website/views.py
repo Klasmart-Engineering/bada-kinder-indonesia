@@ -42,7 +42,7 @@ def main(request):
     data = r.json()['data']
     print(data)
     context = {'data': data}
-    return render(request, 'main.html', context)
+    return render(request, 'v2/main.html', context)
 
 
 @login_required
@@ -94,14 +94,14 @@ def book_detail(request, book_id):
         week_4=week_4,
         ordered_weeks=ordered_weeks
     )
-    return render(request, 'book_detail.html', context)
+    return render(request, 'v2/book_detail.html', context)
 
 
 class Login(LoginView):
     template_name = 'login.html'
 
-class Checkhomework(TemplateView):
-    template_name = "checkhomework.html"
+class Checkhomework(LoginRequiredMixin, TemplateView):
+    template_name = "v2/checkhomework.html"
 
 class Main(LoginRequiredMixin, TemplateView):
     template_name = "main.html"
@@ -194,7 +194,7 @@ def rpp(request):
         'page_range': page_range, 
         'page': page,
     }
-    return render(request, 'rpp.html', context)
+    return render(request, "v2/teacher's-guide.html", context)
 
 
 @login_required
@@ -216,7 +216,7 @@ def activity_book(request):
     item_range = range(1, meta['pagination']['total'] + 1)
     item_list = list(item_range)
 
-    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    paginator = Paginator(item_list, 1) # Show 8 contacts per page.
     page_obj = paginator.get_page(page)
 
     context = {
@@ -227,7 +227,7 @@ def activity_book(request):
         'page': page,
         'kind': 'activity'
     }
-    return render(request, 'activity_book.html', context)
+    return render(request, 'v2/activity-book.html', context)
 
 
 @login_required

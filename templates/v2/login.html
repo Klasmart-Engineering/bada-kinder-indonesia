@@ -1,0 +1,48 @@
+{% extends "component/base.html" %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/login/login.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
+{% endblock %}
+
+
+{% block page_content %}
+	<div class="contents_wrap">
+		<div class="login_wrap">
+			<div class="logo_area">
+				<img class="header_image" src="{% static 'image/login/badanamu-logo.png' %}" alt="">
+			</div>
+			<div class="login_text_area">
+				<span class="title_text">Bada Kinder</span>
+				<p class="login_text">Masuk</p>
+				<p class="intro_text">Hai guru!<br>
+					Selamat datang di Bada Kinder Teacher
+				</p>
+			</div>
+			<form method="POST" action="{% url 'login' %}" autocomplete="off">
+				{% csrf_token %}
+				{% if form.errors %}
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Alamat e-mail dan atau password yang kamu masukkan tidak sesuai
+				  </div>
+            	{% endif %}
+
+				<div class="input_area">
+					<input class="login_input" name="username" type="text" placeholder="Email">
+					<input class="login_input" name="password" type="password" placeholder="Kata Sandi">
+					<div class="login_menu">
+						<span class="menu_button">Lupa Kata Sandi?</span>
+					</div>
+				</div>
+				<div class="button_area">
+					<button type="submit" class="login_button">Masuk</button>
+					Tidak memiliki akun? <a class="signin_btn">Daftar disini</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

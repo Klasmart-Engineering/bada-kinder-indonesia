@@ -1,0 +1,19 @@
+{% extends "v2/component/header.html" %}
+{% load static %}
+
+{% block bg %}bg-white{% endblock %}
+{% block page_content %}
+	<main>
+		<div class="container-fluid px-4">
+            <div style="text-align: center; padding-top: 100px; padding-bottom: 50px;">
+                <a href="https://auth.kidsloop.live/?continue=https%3A%2F%2Fhub.kidsloop.live%2F%23%2F#/" target="_blank">
+                    <img style="width: 30%;" src="{% static 'image/board/url_logo.png' %}" alt="">
+                </a>
+                <div style="margin-top: 20px; padding-left: 45px; font-weight: bold; color: #1596ea; font-size: 20px; padding-top: 25px; padding-bottom: 25px;">
+                    Hover and click the logo to enter the KidsLoop Platform.
+                </div>
+            </div>
+		</div>
+		
+	</main>
+{% endblock %}

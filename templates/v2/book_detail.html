@@ -19,28 +19,7 @@
     padding-left: 225px;
     top: 0px;
 }
-.modal-content {
-  background-color: #fefefe;
-  margin: 90% auto; /* 15% from the top and centered */
-  padding: 50px;
-  border: 1px solid #888;
-  width: 100%; /* Could be more or less, depending on screen size */
-}
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-} 
 .row{
 	display: block;
 }
@@ -67,6 +46,59 @@
 		</div>
 	</div>
 	
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+		Launch demo modal
+	  </button>
+	  <div class="modal fade modal-v-middle" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  	<p>
+					<a class="no-underline" href="">	
+					Level A - Semester 1 - Video 1
+					</a>
+				</p>
+				<p>
+					<a class="no-underline" href="">	
+					Level A - Semester 1 - Video 2
+					</a>
+				</p>
+			</div>
+			
+		  </div>
+		</div>
+	  </div>
+	  
+	
+	  <!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+	
+    <div class="modal-content">
+		<div class="modal-header">
+			<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+			<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+				<source src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/001_W1_A1_V2_1_178eee8239.mp4" type="video/mp4">
+				Your browser does not support HTML video.
+			</video>	
+		
+    </div>
+  </div>
+</div>
+
+
 	<div class="row" style="margin: 11px 0 0 164px;">
 		<div class="week_icon_1">
 		</div>
@@ -283,8 +315,12 @@
 	</div>
 </div>
 
+
 <div style="display: none;">
 	{% for entry in week_1 %}
+	<!-- Modal -->
+
+  
 		{% if entry.videos.data|length > 1 %}
 			{% for video in entry.videos.data %}
 			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
