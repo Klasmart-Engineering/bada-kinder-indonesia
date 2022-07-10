@@ -23,7 +23,21 @@
 	<main>
 		<div class="container">
 			<div class="row">
-				<div class="col level_box_area" style="background-image: url('{% static 'v2/image/index/a-bg.png' %}')">
+
+				{% for entry in data %}
+		<div class="col level_box_area level_box_{{forloop.counter}}" style="background-image: url('{% static 'image/index/' %}{{entry.attributes.level_letter}}-bg.png')">
+			<a href="/level/{{entry.id}}">
+				<div>
+					<img class="age_badge" src="{% static 'image/index/' %}age-{{entry.attributes.level_letter}}.png" alt="">
+				</div>
+				<div class="level-class-area">
+					<img class="level_class" src="{% static 'image/index/' %}level-{{entry.attributes.level_letter}}.png" alt="">
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+
+				<!-- <div class="col level_box_area" style="background-image: url('{% static 'v2/image/index/a-bg.png' %}')">
 					<a href="/level/A">
 						<div>
 							<img class="age_badge" src="{% static 'v2/image/index/5.png' %}" alt="">
@@ -33,6 +47,7 @@
 						</div>
 					</a>
 				</div>
+
 				<div class="col level_box_area" style="background-image: url('{% static 'v2/image/index/b-bg.png' %}')">
 					<a href="/level/A">
 						<div>
@@ -52,7 +67,7 @@
 							<img class="level_class" src="{% static 'v2/image/index/level-c.png' %}" alt="">
 						</div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</main>

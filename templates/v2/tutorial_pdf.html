@@ -1,0 +1,97 @@
+{% extends "v2/component/header.html" %}
+{% load static %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="{% static 'css/contents/nemies_v2.css' %}">
+{% endblock %}
+
+{% block page_content %}
+<main>
+	<div class="container-fluid px-4">
+		<h1 class="mt-1 mb-5">Tutorial File</h1>
+
+
+		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">				
+			{% for entry in data %}
+
+				<div class="col mb-5">
+					<a href="#" class="no-underline" data-toggle="modal" data-target="#bd-modal-lg-{{entry.id}}">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top" 
+							src="{{ entry.attributes.thumbnail.data.attributes.url }}" 
+							
+							alt="{{ entry.attributes.title }}" />
+						<!-- Product details-->
+						<div class="card-body" style="background-color: #9cd8ff">
+							<div class="text-center text-white" >
+								<!-- Product name-->
+								<h6>
+									{{ entry.attributes.title|truncatechars:55 }}
+									
+								</h6>
+							</div>
+						</div>
+					</div>
+				</a>
+					<div id="bd-modal-lg-{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+						
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{ entry.attributes.title }}</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<iframe height="800px" width="100%" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0"></iframe>	
+							
+						</div>
+						</div>
+					</div>
+				</div>
+			{% empty %}
+				<div class="col mb-5">
+					<p>There is no tutorial available.</p>
+				</div>
+			
+			{% endfor %}
+		</div>
+		{% if data %}
+		<nav aria-label="Pagination">
+			<ul class="pagination justify-content-center">
+			{% if page_obj.has_previous %}
+				<li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+				<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+			{% endif %}
+
+			{% if page_obj.number|add:'-2' > 1 %}
+				<li class="page-item"><a class="page-link" href="?page={{ page_obj.number|add:'-3' }}">...</a></li>
+			{% endif %}
+			
+
+			{% for i in page_obj.paginator.page_range %}
+				{% if page_obj.number == i %}
+					<li class="page-item active"><a class="page-link" href="#">{{ i }} </a></li>
+				{% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+					<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% endif %}
+			{% endfor %}
+			
+			{% if page_obj.paginator.num_pages > page_obj.number|add:'2' %}
+				<li class="page-item"><a class="page-link" href="?page={{ page_obj.number|add:'3' }}">...</a></li>
+			{% endif %}
+				
+			{% if page_obj.has_next %}
+				<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+				<li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages  }}">Last</a></li>
+			{% endif %}
+
+			
+			</ul>
+		</nav>
+		{% endif %}
+	</div>
+		
+</main>
+{% endblock %}

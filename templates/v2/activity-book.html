@@ -6,227 +6,53 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-1 mb-5">Activity Book</h1>
 
-			<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">				
+				{% for entry in data %}
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-	
-    <div class="modal-content">
-		<div class="modal-header">
-			<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		  </div>
-		  <iframe height="800px" width="100%" src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/BKA_LC_M3_W2_LP_7_29b6210e91.pdf" frameborder="0"></iframe>	
+					<div class="col mb-5">
+						<a href="#" class="no-underline" data-toggle="modal" data-target="#bd-modal-lg-{{entry.id}}">
+						<div class="card h-100">
+							<!-- Product image-->
+							<img class="card-img-top" 
+								src="{{ entry.attributes.thumbnail.data.attributes.url }}" 
+								
+								alt="{{ entry.attributes.title }}" />
+							<!-- Product details-->
+							<div class="card-body" style="background-color: #9cd8ff">
+								<div class="text-center text-white" >
+									<!-- Product name-->
+									<h6>
+										{{ entry.attributes.title|truncatechars:55 }}
+										
+									</h6>
+								</div>
+							</div>
+						</div>
+					</a>
+						<div id="bd-modal-lg-{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-xl">
+							  
+							  <div class="modal-content">
+								  <div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">{{ entry.attributes.title }}</h5>
+									  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									  </button>
+									</div>
+									<iframe height="800px" width="100%" src="{{ entry.attributes.file.data.attributes.url }}" frameborder="0"></iframe>	
+								  
+							  </div>
+							</div>
+						  </div>
+					</div>
+				{% empty %}
 		
-    </div>
-  </div>
-</div>
-
-			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Screen_Shot_2022_06_16_at_10_49_18_06ada6447e.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_10"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level A-Month 1</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_10" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/A_Month_1_AB_95fca3a8b4.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Screen_Shot_2022_06_16_at_13_48_07_a8f4952786.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_11"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level A-Month 2</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_11" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/A_Month_2_AB_d3661bec0e.pdf"
-									width="800px" height="800px" frameborder="0">
-								</iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Screen_Shot_2022_06_16_at_13_52_44_c84197b0d9.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_12"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level A-Month 3</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_12" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/A_Month_3_AB_feb5f37b5c.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Screen_Shot_2022_06_16_at_13_57_49_856775745b.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_13"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level A-Month 4</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_13" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/A_Month_4_AB_4b6fa72a6f.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
+					<h3>There is no available {{kind}} book.</h3>
+					
 				
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Screen_Shot_2022_06_16_at_14_06_19_6f10ec5863.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_14"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level A-Month 6</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_14" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/A_Month_6_AB_2eff748071.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Thumb_B_Month1_AB_fb0833b9be.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_15"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level B-Month 1</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_15" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/B_Month_1_AB_fe5e33e84d.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Thumb_B_Month2_AB_c121921ad0.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_16"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level B-Month 2</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_16" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/B_Month_2_AB_b5bd3e7235.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" 
-							src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/Thumb_B_Month3_AB_8932ed837c.png" 
-							data-bs-toggle="modal"
-							data-bs-target="#vimeo_modal_17"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body" style="background-color: #9cd8ff">
-							<div class="text-center text-white" >
-								<!-- Product name-->
-								<h6>Activity Book-Level B-Month 3</h6>
-							</div>
-						</div>
-
-						<div id="vimeo_modal_17" class="modal fade" role="dialog">
-							<div class="modal-dialog" style="width: 1200px;">
-								<iframe src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/B_Month_3_AB_08fa239031.pdf"
-									width="800px" height="800px" frameborder="0">
-							    </iframe>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+				{% endfor %}
 			</div>
+
 			<nav aria-label="Pagination">
 				<ul class="pagination justify-content-center">
 				{% if page_obj.has_previous %}

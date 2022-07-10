@@ -124,11 +124,11 @@
                             
                             <div class="collapse {% show request.path 'tutorial' %}" id="collapseTutorial" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-									<a class="nav-link {% active request.path 'videos' %}" 
+									<a class="nav-link {% active request.path 'tutorial-video' %}" 
                                         href="{% url 'tutorial_video' %}">
 										Videos
 									</a>
-									<a class="nav-link {% active request.path 'files' %}" 
+									<a class="nav-link {% active request.path 'tutorial-pdf' %}" 
                                         href="{% url 'tutorial_pdf' %}">
 										Files
 									</a>
