@@ -184,7 +184,7 @@ def rpp(request):
     item_range = range(1, meta['pagination']['total'] + 1)
     item_list = list(item_range)
 
-    paginator = Paginator(item_list, 8) # Show 8 contacts per page.
+    paginator = Paginator(item_list, 1) # Show 8 contacts per page.
     page_obj = paginator.get_page(page)
 
     context = {
@@ -260,7 +260,7 @@ def story_book(request):
         'page': page,
         'kind': 'story'
     }
-    return render(request, 'activity_book.html', context)
+    return render(request, 'v2/activity-book.html', context)
 
 @login_required
 def course_book(request):
@@ -292,7 +292,7 @@ def course_book(request):
         'page': page,
         'kind': 'course'
     }
-    return render(request, 'activity_book.html', context)
+    return render(request, 'v2/activity-book.html', context)
 
 
 @login_required

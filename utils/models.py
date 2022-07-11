@@ -45,6 +45,6 @@ class SingletonModel(models.Model):
 
 
 class SiteSettings(SingletonModel):
-    hide_activity_book = models.BooleanField(default=False)
-    hide_course_book = models.BooleanField(default=False)
-    hide_story_book = models.BooleanField(default=False)
+    show_activity_book = models.BooleanField(default=True)
+    show_course_book = models.BooleanField(default=False)
+    show_story_book = models.BooleanField(default=False)

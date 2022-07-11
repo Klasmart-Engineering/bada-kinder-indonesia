@@ -1,5 +1,8 @@
 {% load static %}
 {% load navigation %}
+{% load generals %}
+
+{% settings as cms_settings %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,10 +108,28 @@
                                         href="{% url 'rpp' %}">
 										Teacher's Guide
 									</a>
+                                    {% if cms_settings.show_activity_book %}
                                     <a class="nav-link {% active request.path 'activity-book' %}" 
 										href="{% url 'activity_book' %}">
 										Activity Book
 									</a>
+                                    {% endif %}
+                                    {% if cms_settings.show_course_book %}
+                                    <a class="nav-link {% active request.path 'course-book' %}" 
+										href="{% url 'course_book' %}">
+										Course Book
+									</a>
+                                    {% endif %}
+                                    {% if cms_settings.show_story_book %}
+                                    <a class="nav-link {% active request.path 'story-book' %}" 
+                                        href="{% url 'story_book' %}">
+                                        Story Book
+                                    </a>
+                                    {% endif %}
+
+
+                                    
+
                                 </nav>
                             </div>
                             <hr>

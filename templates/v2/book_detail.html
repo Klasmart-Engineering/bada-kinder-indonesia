@@ -46,57 +46,7 @@
 		</div>
 	</div>
 	
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-		Launch demo modal
-	  </button>
-	  <div class="modal fade modal-v-middle" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			<div class="modal-body">
-			  	<p>
-					<a class="no-underline" href="">	
-					Level A - Semester 1 - Video 1
-					</a>
-				</p>
-				<p>
-					<a class="no-underline" href="">	
-					Level A - Semester 1 - Video 2
-					</a>
-				</p>
-			</div>
-			
-		  </div>
-		</div>
-	  </div>
-	  
 	
-	  <!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-	
-    <div class="modal-content">
-		<div class="modal-header">
-			<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		  </div>
-			<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
-				<source src="https://klid-prod-bada-kinder.s3.ap-southeast-3.amazonaws.com/001_W1_A1_V2_1_178eee8239.mp4" type="video/mp4">
-				Your browser does not support HTML video.
-			</video>	
-		
-    </div>
-  </div>
-</div>
 
 
 	<div class="row" style="margin: 11px 0 0 164px;">
@@ -107,45 +57,93 @@
 			{% for entry in week_1 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
-				<!-- {{entry.videos.data}} -->
-				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							{% if entry.videos.data|length > 1 %}
-							<div class="modal-content" style="min-width: 350px;">						
-								{% for video in entry.videos.data %}
-									{% with outer_counter=forloop.counter %}
-
-									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
-										<p><a href="#">
-											{% for name in entry.video_names %}
-												{% if forloop.counter == outer_counter %}
-													{{ name }}
-												{% endif %}
-											{% endfor %}
-										</a></p>
-									</div>
-									{% endwith %}
-								{% endfor %}
-								
-							</div>
-							{% endif %}
-						</div>
-					</div>
-				</div>
 				{% if entry.videos.data|length > 1 %}
-					{% for video in entry.videos.data %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
 									
-					<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
-						<div id="custom_modal_body" class="modal-dialog">
-							<div class="vimeo_wrap">
+										{% for video in entry.videos.data %}
+											{% with outer_counter=forloop.counter %}
+
+											<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+												<p><a class="no-underline" href="javascript:void(0)" >
+													{% for name in entry.video_names %}
+														{% if forloop.counter == outer_counter %}
+															{{ name }}
+														{% endif %}
+													{% endfor %}
+												</a></p>
+											</div>
+
+											<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-xl">
+								
+													<div class="modal-content">
+														<div class="modal-header">
+															<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+															<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+															Your browser does not support HTML video.
+														</video>	
+														
+													</div>
+												</div>
+											</div>
+											{% endwith %}
+										{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% elif entry.videos.data|length == 1 %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+		
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+									<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+									Your browser does not support HTML video.
+								</video>	
 								
 							</div>
 						</div>
 					</div>
-					{% endfor %}
+				
+				{% else %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<p>We're sorry, there is no video available on this date!</p>
+								</div>
+							
+							</div>
+						</div>
+					</div>
 				{% endif %}
-
+					
 
 			{% endfor %}
 			
@@ -159,47 +157,93 @@
 			{% for entry in week_2 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
-				<!-- {{entry.videos.data}} -->
-				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							{% if entry.videos.data|length > 1 %}
-							<div class="modal-content" style="min-width: 350px;">
-								
-								
-								{% for video in entry.videos.data %}
-									{% with outer_counter=forloop.counter %}
-
-									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
-										<p><a href="#">
-											{% for name in entry.video_names %}
-												{% if forloop.counter == outer_counter %}
-													{{ name }}
-												{% endif %}
-											{% endfor %}
-										</a></p>
-									</div>
-									{% endwith %}
-								{% endfor %}
-								
-							  </div>
-							  {% endif %}
-						</div>
-					</div>
-				</div>
 				{% if entry.videos.data|length > 1 %}
-				{% for video in entry.videos.data %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
 									
-									<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							
+										{% for video in entry.videos.data %}
+											{% with outer_counter=forloop.counter %}
+
+											<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+												<p><a class="no-underline" href="javascript:void(0)" >
+													{% for name in entry.video_names %}
+														{% if forloop.counter == outer_counter %}
+															{{ name }}
+														{% endif %}
+													{% endfor %}
+												</a></p>
+											</div>
+
+											<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-xl">
+								
+													<div class="modal-content">
+														<div class="modal-header">
+															<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+															<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+															Your browser does not support HTML video.
+														</video>	
+														
+													</div>
+												</div>
+											</div>
+											{% endwith %}
+										{% endfor %}
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-								{% endfor %}
-								{% endif %}
-
+				{% elif entry.videos.data|length == 1 %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+		
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+									<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+									Your browser does not support HTML video.
+								</video>	
+								
+							</div>
+						</div>
+					</div>
+				
+				{% else %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<p>We're sorry, there is no video available on this date!</p>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				{% endif %}
+					
 
 			{% endfor %}
 			
@@ -213,47 +257,93 @@
 			{% for entry in week_3 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
-				<!-- {{entry.videos.data}} -->
-				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							{% if entry.videos.data|length > 1 %}
-							<div class="modal-content" style="min-width: 350px;">
-								
-								
-								{% for video in entry.videos.data %}
-									{% with outer_counter=forloop.counter %}
-
-									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
-										<p><a href="#">
-											{% for name in entry.video_names %}
-												{% if forloop.counter == outer_counter %}
-													{{ name }}
-												{% endif %}
-											{% endfor %}
-										</a></p>
-									</div>
-									{% endwith %}
-								{% endfor %}
-								
-							  </div>
-							  {% endif %}
-						</div>
-					</div>
-				</div>
 				{% if entry.videos.data|length > 1 %}
-				{% for video in entry.videos.data %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
 									
-									<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							
+										{% for video in entry.videos.data %}
+											{% with outer_counter=forloop.counter %}
+
+											<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+												<p><a class="no-underline" href="javascript:void(0)" >
+													{% for name in entry.video_names %}
+														{% if forloop.counter == outer_counter %}
+															{{ name }}
+														{% endif %}
+													{% endfor %}
+												</a></p>
+											</div>
+
+											<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-xl">
+								
+													<div class="modal-content">
+														<div class="modal-header">
+															<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+															<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+															Your browser does not support HTML video.
+														</video>	
+														
+													</div>
+												</div>
+											</div>
+											{% endwith %}
+										{% endfor %}
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-								{% endfor %}
-								{% endif %}
-
+				{% elif entry.videos.data|length == 1 %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+		
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+									<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+									Your browser does not support HTML video.
+								</video>	
+								
+							</div>
+						</div>
+					</div>
+				
+				{% else %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<p>We're sorry, there is no video available on this date!</p>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				{% endif %}
+					
 
 			{% endfor %}
 			
@@ -267,47 +357,93 @@
 			{% for entry in week_4 %}
 				<div class="{{entry.day.data.attributes.name|slice:3|lower}}_icon" data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}">
 				</div>
-				<!-- {{entry.videos.data}} -->
-				<div id="vimeo_modal_{{entry.id}}" class="modal fade" role="dialog">
-					<div id="custom_modal_body" class="modal-dialog">
-						<div class="vimeo_wrap">
-							{% if entry.videos.data|length > 1 %}
-							<div class="modal-content" style="min-width: 350px;">
+				{% if entry.videos.data|length > 1 %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
 								
-								
-								{% for video in entry.videos.data %}
-									{% with outer_counter=forloop.counter %}
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									
+										{% for video in entry.videos.data %}
+											{% with outer_counter=forloop.counter %}
 
-									<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
-										<p><a href="#">
-											{% for name in entry.video_names %}
-												{% if forloop.counter == outer_counter %}
-													{{ name }}
-												{% endif %}
-											{% endfor %}
-										</a></p>
-									</div>
-									{% endwith %}
-								{% endfor %}
+											<div data-toggle="modal" data-target="#vimeo_modal_{{entry.id}}_{{video.id}}">
+												<p><a class="no-underline" href="javascript:void(0)" >
+													{% for name in entry.video_names %}
+														{% if forloop.counter == outer_counter %}
+															{{ name }}
+														{% endif %}
+													{% endfor %}
+												</a></p>
+											</div>
+
+											<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-xl">
 								
-							  </div>
-							  {% endif %}
+													<div class="modal-content">
+														<div class="modal-header">
+															<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+															<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+															Your browser does not support HTML video.
+														</video>	
+														
+													</div>
+												</div>
+											</div>
+											{% endwith %}
+										{% endfor %}
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				{% if entry.videos.data|length > 1 %}
-				{% for video in entry.videos.data %}
-									
-					<div id="vimeo_modal_{{entry.id}}_{{video.id}}" class="modal fade" role="dialog">
-						<div id="custom_modal_body" class="modal-dialog">
-							<div class="vimeo_wrap">
+				{% elif entry.videos.data|length == 1 %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+		
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<video oncontextmenu="return false;" controls="" controlslist="nodownload" data=" ">
+									<source src="{{entry.videos.data.0.attributes.url}}" type="video/mp4">
+									Your browser does not support HTML video.
+								</video>	
 								
 							</div>
 						</div>
 					</div>
-					{% endfor %}
+				
+				{% else %}
+					<div id="vimeo_modal_{{entry.id}}" class="modal fade modal-v-middle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<p>We're sorry, there is no video available on this date!</p>
+								</div>
+							
+							</div>
+						</div>
+					</div>
 				{% endif %}
-
+					
 
 			{% endfor %}
 			
@@ -316,246 +452,14 @@
 </div>
 
 
-<div style="display: none;">
-	{% for entry in week_1 %}
-	<!-- Modal -->
 
-  
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{video.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-			{% endfor %}
-		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{entry.videos.data.0.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-		{% else %}
-			<div id="vimeo_{{entry.id}}">
-				<div class="modal-content" style="min-width: 350px;">	
-					We're sorry, there is no video available on this date!
-				</div>
-			</div>
-		{% endif %}
-		
-		
-	{% endfor %}
-	{% for entry in week_2 %}
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{video.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-			{% endfor %}
-		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{entry.videos.data.0.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-		{% else %}
-			<div id="vimeo_{{entry.id}}">
-				<div class="modal-content" style="min-width: 350px;">	
-					We're sorry, there is no video available on this date!
-				</div>
-			</div>
-		{% endif %}
-		
-	{% endfor %}
-	{% for entry in week_3 %}
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{video.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-			{% endfor %}
-		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{entry.videos.data.0.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-		{% else %}
-			<div id="vimeo_{{entry.id}}">
-				<div class="modal-content" style="min-width: 350px;">	
-					We're sorry, there is no video available on this date!
-				</div>
-			</div>
-		{% endif %}
-
-		
-	{% endfor %}
-	{% for entry in week_4 %}
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-			<video id="vimeo_{{entry.id}}_{{video.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{video.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-			{% endfor %}
-		{% elif entry.videos.data|length == 1 %}
-			<video id="vimeo_{{entry.id}}" width="1024" height="720" oncontextmenu="return false;"  controls controlsList="nodownload">
-				<source 
-					src="{{entry.videos.data.0.attributes.url}}"
-					type="video/mp4"
-				>
-				Your browser does not support HTML video.
-			</video>
-		{% else %}
-			<div id="vimeo_{{entry.id}}">
-				<div class="modal-content" style="min-width: 350px;">	
-					We're sorry, there is no video available on this date!
-				</div>
-			</div>
-		{% endif %}
-		
-	{% endfor %}
-	
-</div>
 {% endwith %}
 <script>
-	{% for entry in week_1 %}
-	
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
-					$('#vimeo_modal_{{entry.id}}').modal('hide');
-					
-					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
-					$a = ' '
-					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-				})
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
-					$(this).find($('.vimeo_wrap')).empty()
-				})
-			{% endfor %}
-		{% else %}
-			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-				$a = ' '
-				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-			})
-			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-				$(this).find($('.vimeo_wrap')).empty()
-			})
-		{% endif %}
+	$('.modal').on('hide.bs.modal', function(e) {
+    	this.querySelector('video').pause();
+		this.querySelector('video').load();
+	});
 
-	{% endfor %}
-
-	{% for entry in week_2 %}
-	
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
-					$('#vimeo_modal_{{entry.id}}').modal('hide');
-					
-					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
-					$a = ' '
-					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-				})
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
-					$(this).find($('.vimeo_wrap')).empty()
-				})
-			{% endfor %}
-		{% else %}
-			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-				$a = ' '
-				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-			})
-			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-				$(this).find($('.vimeo_wrap')).empty()
-			})
-		{% endif %}
-
-	{% endfor %}
-	{% for entry in week_3 %}
-	
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
-					$('#vimeo_modal_{{entry.id}}').modal('hide');
-					
-					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
-					$a = ' '
-					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-				})
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
-					$(this).find($('.vimeo_wrap')).empty()
-				})
-			{% endfor %}
-		{% else %}
-			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-				$a = ' '
-				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-			})
-			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-				$(this).find($('.vimeo_wrap')).empty()
-			})
-		{% endif %}
-
-	{% endfor %}
-	{% for entry in week_4 %}
-	
-		{% if entry.videos.data|length > 1 %}
-			{% for video in entry.videos.data %}
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('show.bs.modal', function (e) {
-					$('#vimeo_modal_{{entry.id}}').modal('hide');
-					
-					$q = $('#vimeo_{{entry.id}}_{{video.id}}').clone().removeAttr('id')
-					$a = ' '
-					$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-				})
-				$('#vimeo_modal_{{entry.id}}_{{video.id}}').on('hidden.bs.modal', function (e) {
-					$(this).find($('.vimeo_wrap')).empty()
-				})
-			{% endfor %}
-		{% else %}
-			$('#vimeo_modal_{{entry.id}}').on('show.bs.modal', function (e) {
-				$q = $('#vimeo_{{entry.id}}').clone().removeAttr('id')
-				$a = ' '
-				$(this).find($('.vimeo_wrap')).append($q.attr('data', $a))
-			})
-			$('#vimeo_modal_{{entry.id}}').on('hidden.bs.modal', function (e) {
-				$(this).find($('.vimeo_wrap')).empty()
-			})
-		{% endif %}
-
-	{% endfor %}
-	
 </script>
-
 {% endblock %}
 
-
-
-{% block copyright %}
-<div style="float: left; margin-left: 20px; margin-top:70px;">
-	Copyright © 2022 by KidsLoop Co.,Ltd. All Rights Reserved.
-</div>
-{% endblock %}

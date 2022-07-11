@@ -47,5 +47,5 @@ admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
 class SiteSettingsAdmin(admin.ModelAdmin):
-    list_display = ['hide_activity_book', 'hide_course_book', 'hide_story_book']
+    list_display = ['show_activity_book', 'show_course_book', 'show_story_book']
 admin.site.register(models.SiteSettings, SiteSettingsAdmin)

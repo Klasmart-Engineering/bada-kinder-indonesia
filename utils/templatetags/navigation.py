@@ -2,6 +2,9 @@ from django import template
 
 register = template.Library()
 
+
+FIRST_PATHS = ['main', 'rpp', 'activity-book', 'course-book', 'story-book']
+
 @register.simple_tag
 def active(path, name):
     try:
@@ -21,7 +24,7 @@ def collapsed(path, section):
         first_path = ''
 
     open_section = ""
-    if first_path in ['main', 'rpp', 'activity-book']:
+    if first_path in FIRST_PATHS:
         open_section = "bada-kinder"
     elif first_path in ['checkhomework']:
         open_section = "homework"
@@ -40,7 +43,7 @@ def show(path, section):
         first_path = ''
 
     open_section = ""
-    if first_path in ['main', 'rpp', 'activity-book']:
+    if first_path in FIRST_PATHS:
         open_section = "bada-kinder"
     elif first_path in ['checkhomework']:
         open_section = "homework"
