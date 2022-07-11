@@ -15,7 +15,7 @@
 			{% for entry in data %}
 
 				<div class="col mb-5">
-					<a href="#" class="no-underline" data-toggle="modal" data-target="#bd-modal-lg-{{entry.id}}">
+					<a href="javascript:void(0)" class="no-underline" data-toggle="modal" data-target="#bd-modal-lg-{{entry.id}}">
 					<div class="card h-100">
 						<!-- Product image-->
 						<img class="card-img-top" 
@@ -75,7 +75,7 @@
 
 			{% for i in page_obj.paginator.page_range %}
 				{% if page_obj.number == i %}
-					<li class="page-item active"><a class="page-link" href="#">{{ i }} </a></li>
+					<li class="page-item active"><a class="page-link" href="javascript:void(0)">{{ i }} </a></li>
 				{% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
 					<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
 				{% endif %}
