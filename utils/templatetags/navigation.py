@@ -53,3 +53,15 @@ def show(path, section):
     if open_section == section:
         return 'show'
     return ''
+
+@register.simple_tag
+def name_initials(value):
+    """ 
+    Returns the first character of firstname and lastname in lowercase for a given name
+    """
+    names = value.split()
+    first_name_initial = names[0][0]
+    last_name_initial = ""
+    if len(names) > 1:
+        last_name_initial = names[-1][0]
+    return f"{first_name_initial}{last_name_initial}"

@@ -97,4 +97,11 @@
 	</div>
 		
 </main>
+<script>
+	$('.modal').on('hide.bs.modal', function(e) {
+    	this.querySelector('video').pause();
+		this.querySelector('video').load();
+	});
+
+</script>
 {% endblock %}
